@@ -9,19 +9,45 @@ PASS = "iHkatal#B7"
 LOCAL_DIR = os.path.dirname(os.path.abspath(__file__))
 REMOTE_DIR = "/var/www/shisanxiang"
 
-NGINX_CONF = """server {
+NGINX_CONF = r"""
+server {
+    listen 80;
+    server_name 13x.lol ai26.sbs www.13x.lol www.ai26.sbs;
+    return 301 https://$host$request_uri;
+}
+
+server {
     listen 80;
     server_name _;
+    root /var/www/shisanxiang;
+    index index.html;
+    gzip on;
+    gzip_types text/plain text/css application/javascript text/xml image/svg+xml;
+    location / { try_files $uri $uri/ /index.html; }
+}
+
+server {
+    listen 443 ssl http2;
+    server_name 13x.lol www.13x.lol ai26.sbs www.ai26.sbs;
+
+    ssl_certificate /etc/letsencrypt/live/13x.lol/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/13x.lol/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Content-Type-Options nosniff always;
 
     root /var/www/shisanxiang;
     index index.html;
 
     gzip on;
-    gzip_types text/plain text/css application/javascript text/xml;
+    gzip_types text/plain text/css application/javascript text/xml image/svg+xml;
     gzip_min_length 256;
 
-    location ~* \\.(css|js|png|jpg|jpeg|gif|ico|svg|woff2?)$ {
-        expires 7d;
+    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff2?)$ {
+        expires 30d;
         add_header Cache-Control "public, immutable";
     }
 
