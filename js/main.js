@@ -273,6 +273,58 @@
     });
   });
 
+  // ═══════════════ i18n Language Switch ═══════════════
+  const i18nData = {
+    en: {
+      'nav.features': 'Features', 'nav.voice': 'Voice AI', 'nav.router': 'AI Router',
+      'nav.skills': 'Skills', 'nav.wechat': 'WeChat', 'nav.ecosystem': 'Ecosystem',
+      'nav.cta': 'Get Started',
+      'hero.badge': 'Open Source · Free · All-in-One',
+      'hero.title': 'ShiSanXiang',
+      'hero.slogan': '13 Spices, One AI Empire',
+      'hero.desc': 'Full-stack AI Assistant Platform — 13+ LLM Smart Routing · 63+ Built-in Skills · WeChat Automation<br>Remote Desktop Control · Visual Workflow · Cross-platform',
+      'hero.cta1': '🚀 Get Started', 'hero.cta2': 'Learn More ↓',
+    },
+    zh: {
+      'nav.features': '核心能力', 'nav.voice': '语音引擎', 'nav.router': 'AI 路由',
+      'nav.skills': '技能中心', 'nav.wechat': '微信自动化', 'nav.ecosystem': '生态版图',
+      'nav.cta': '立即体验',
+      'hero.badge': '开源 · 免费 · 全能',
+      'hero.title': '十三香小龙虾',
+      'hero.slogan': '一壶十三香，煮沸 AI 江湖',
+      'hero.desc': '全栈式 AI 智能助手平台 — 13+ 大模型智能路由 · 63+ 内置超能技能 · 微信自动化帝国<br>远程桌面控制 · 可视化工作流 · 全平台覆盖',
+      'hero.cta1': '🚀 开始使用', 'hero.cta2': '了解更多 ↓',
+    }
+  };
+
+  let currentLang = localStorage.getItem('lang') || 'zh';
+  const langBtn = document.getElementById('langToggle');
+
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    if (langBtn) langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+
+    const strings = i18nData[lang];
+    if (!strings) return;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (strings[key]) el.textContent = strings[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.dataset.i18nHtml;
+      if (strings[key]) el.innerHTML = strings[key];
+    });
+  }
+
+  if (langBtn) {
+    langBtn.addEventListener('click', () => {
+      applyLang(currentLang === 'zh' ? 'en' : 'zh');
+    });
+  }
+  if (currentLang === 'en') applyLang('en');
+
   // ═══════════════ Copy Button Feedback ═══════════════
   document.querySelectorAll('.cta-copy').forEach(btn => {
     btn.addEventListener('click', () => {

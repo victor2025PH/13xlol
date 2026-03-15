@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <link rel="icon" href="logo.svg">
 </head>
 <body>
 
@@ -40,13 +40,14 @@
         <span class="nav-name">十三香小龙虾</span>
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="#features" class="nav-link">核心能力</a>
-        <a href="#voice" class="nav-link">语音引擎</a>
-        <a href="#router" class="nav-link">AI 路由</a>
-        <a href="#skills" class="nav-link">技能中心</a>
-        <a href="#wechat" class="nav-link">微信自动化</a>
-        <a href="#ecosystem" class="nav-link">生态版图</a>
-        <a href="#cta" class="nav-link nav-link--cta">立即体验</a>
+        <a href="#features" class="nav-link" data-i18n="nav.features">核心能力</a>
+        <a href="#voice" class="nav-link" data-i18n="nav.voice">语音引擎</a>
+        <a href="#router" class="nav-link" data-i18n="nav.router">AI 路由</a>
+        <a href="#skills" class="nav-link" data-i18n="nav.skills">技能中心</a>
+        <a href="#wechat" class="nav-link" data-i18n="nav.wechat">微信自动化</a>
+        <a href="#ecosystem" class="nav-link" data-i18n="nav.ecosystem">生态版图</a>
+        <a href="#cta" class="nav-link nav-link--cta" data-i18n="nav.cta">立即体验</a>
+        <button class="nav-lang" id="langToggle" title="Switch Language">EN</button>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="菜单">
         <span></span><span></span><span></span>
@@ -59,21 +60,21 @@
     <canvas class="hero-canvas" id="heroCanvas"></canvas>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-badge reveal">开源 · 免费 · 全能</div>
+      <div class="hero-badge reveal" data-i18n="hero.badge">开源 · 免费 · 全能</div>
       <h1 class="hero-title reveal">
-        <span class="hero-title-cn">十三香小龙虾</span>
+        <span class="hero-title-cn" data-i18n="hero.title">十三香小龙虾</span>
       </h1>
-      <p class="hero-slogan reveal">一壶十三香，煮沸 AI 江湖</p>
-      <p class="hero-desc reveal">
+      <p class="hero-slogan reveal" data-i18n="hero.slogan">一壶十三香，煮沸 AI 江湖</p>
+      <p class="hero-desc reveal" data-i18n-html="hero.desc">
         全栈式 AI 智能助手平台 — 13+ 大模型智能路由 · 63+ 内置超能技能 · 微信自动化帝国<br>
         远程桌面控制 · 可视化工作流 · 全平台覆盖
       </p>
       <div class="hero-cta reveal">
         <a href="#cta" class="btn btn--primary">
           <span class="btn-glow"></span>
-          🚀 开始使用
+          <span data-i18n="hero.cta1">🚀 开始使用</span>
         </a>
-        <a href="#features" class="btn btn--outline">了解更多 ↓</a>
+        <a href="#features" class="btn btn--outline" data-i18n="hero.cta2">了解更多 ↓</a>
       </div>
       <div class="hero-stats reveal">
         <div class="hero-stat">
@@ -878,6 +879,70 @@
     </div>
   </section>
 
+  <!-- ═══════════════ 赞助支持 ═══════════════ -->
+  <section class="section sponsor" id="sponsor">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">SPONSOR</span>
+        <h2 class="section-title">给这只龙虾加点料？</h2>
+        <p class="section-subtitle">50000+ 行代码，500+ 杯咖啡，无数个深夜——开源不易，感谢支持</p>
+      </div>
+      <div class="sponsor-grid reveal">
+        <div class="sponsor-card">
+          <span class="sponsor-icon">🖥️</span>
+          <strong>服务器费用</strong>
+          <p>AI API 调用、云服务器、CDN 每月都在烧钱</p>
+        </div>
+        <div class="sponsor-card">
+          <span class="sponsor-icon">☕</span>
+          <strong>咖啡续命</strong>
+          <p>代码需要人来调试（至少目前是这样）</p>
+        </div>
+        <div class="sponsor-card">
+          <span class="sponsor-icon">🌍</span>
+          <strong>社区建设</strong>
+          <p>文档翻译、视频教程、用户支持都需要时间</p>
+        </div>
+        <div class="sponsor-card">
+          <span class="sponsor-icon">🦞</span>
+          <strong>买小龙虾</strong>
+          <p>好吧这条是真的，研发灵感需要美食激发</p>
+        </div>
+      </div>
+      <div class="sponsor-contact reveal">
+        <p>联系我们获取赞助渠道，每一份支持都让龙虾更香 🌶️</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 联系我们 ═══════════════ -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">CONTACT</span>
+        <h2 class="section-title">找到我们</h2>
+      </div>
+      <div class="contact-grid reveal">
+        <a href="https://t.me/ai_zkw" target="_blank" class="contact-card">
+          <span class="contact-icon">✈️</span>
+          <strong>Telegram</strong>
+          <span>@ai_zkw</span>
+        </a>
+        <div class="contact-card">
+          <span class="contact-icon">💬</span>
+          <strong>微信</strong>
+          <span>zhu0396000</span>
+          <small>加好友请备注"十三香"</small>
+        </div>
+        <a href="https://github.com/victor2025PH/13xlol" target="_blank" class="contact-card">
+          <span class="contact-icon">🐙</span>
+          <strong>GitHub</strong>
+          <span>victor2025PH/13xlol</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════ CTA ═══════════════ -->
   <section class="section cta-section" id="cta">
     <div class="container">
@@ -885,22 +950,22 @@
         <h2 class="cta-title">准备好煮沸你的 AI 江湖了吗？</h2>
         <p class="cta-desc">开源免费，5 分钟部署，即刻拥有你的 AI 全能管家</p>
         <div class="cta-buttons">
-          <a href="#" class="btn btn--primary btn--large">
+          <a href="https://github.com/victor2025PH/13xlol" target="_blank" class="btn btn--primary btn--large">
             <span class="btn-glow"></span>
-            🦞 立即下载
-          </a>
-          <a href="#" class="btn btn--outline btn--large">
             ⭐ GitHub Star
           </a>
-          <a href="#" class="btn btn--outline btn--large">
-            💬 加入社区
+          <a href="https://t.me/ai_zkw" target="_blank" class="btn btn--outline btn--large">
+            ✈️ Telegram
+          </a>
+          <a href="#contact" class="btn btn--outline btn--large">
+            💬 联系我们
           </a>
         </div>
         <div class="cta-deploy">
           <p>一键安装：</p>
           <div class="cta-code">
-            <code>curl -fsSL https://install.shisanxiang.ai | bash</code>
-            <button class="cta-copy" onclick="navigator.clipboard.writeText('curl -fsSL https://install.shisanxiang.ai | bash')">复制</button>
+            <code>git clone https://github.com/victor2025PH/13xlol.git</code>
+            <button class="cta-copy" onclick="navigator.clipboard.writeText('git clone https://github.com/victor2025PH/13xlol.git')">复制</button>
           </div>
         </div>
       </div>
@@ -918,24 +983,21 @@
         </div>
         <div class="footer-col">
           <h4>产品</h4>
-          <a href="#">功能介绍</a>
-          <a href="#">使用文档</a>
-          <a href="#">更新日志</a>
-          <a href="#">路线图</a>
+          <a href="#features">功能介绍</a>
+          <a href="#demo">在线演示</a>
+          <a href="https://ai26.sbs">镜像站</a>
         </div>
         <div class="footer-col">
           <h4>社区</h4>
-          <a href="#">GitHub</a>
-          <a href="#">Discord</a>
-          <a href="#">微信群</a>
-          <a href="#">贡献指南</a>
+          <a href="https://github.com/victor2025PH/13xlol" target="_blank">GitHub</a>
+          <a href="https://t.me/ai_zkw" target="_blank">Telegram</a>
+          <a href="#contact">微信联系</a>
         </div>
         <div class="footer-col">
-          <h4>资源</h4>
-          <a href="#">API 文档</a>
-          <a href="#">技能开发</a>
-          <a href="#">插件市场</a>
-          <a href="#">部署指南</a>
+          <h4>联系方式</h4>
+          <a href="https://t.me/ai_zkw" target="_blank">✈️ @ai_zkw</a>
+          <a href="#contact">💬 微信：zhu0396000</a>
+          <a href="#sponsor">❤️ 赞助支持</a>
         </div>
       </div>
       <div class="footer-bottom">
