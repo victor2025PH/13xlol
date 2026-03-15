@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>十三香小龙虾 — 一壶十三香，煮沸 AI 江湖</title>
+  <meta name="description" content="十三香小龙虾：全栈式 AI 智能助手平台。13+ 大模型、63+ 技能、微信自动化、远程桌面、工作流引擎，一只龙虾搞定一切。">
+  <meta name="keywords" content="十三香小龙虾,AI助手,语音助手,微信自动化,工作流,远程桌面,开源AI,大模型路由">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:title" content="十三香小龙虾 — 一壶十三香，煮沸 AI 江湖">
+  <meta property="og:description" content="全栈式 AI 智能助手平台。13+ 大模型智能路由、63+ 内置技能、微信自动化、远程桌面、可视化工作流。开源免费。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="十三香小龙虾 — AI 全能助手平台">
+  <meta name="twitter:description" content="13+ 大模型 · 63+ 技能 · 微信自动化 · 开源免费">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+</head>
+<body>
+
+  <!-- ═══════════════ Loading Screen ═══════════════ -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-icon">🦞</div>
+      <div class="loader-text">十三香小龙虾</div>
+      <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+      <div class="loader-hint">AI 全能管家加载中...</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ 导航栏 ═══════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">
+        <span class="nav-logo">🦞</span>
+        <span class="nav-name">十三香小龙虾</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#features" class="nav-link">核心能力</a>
+        <a href="#voice" class="nav-link">语音引擎</a>
+        <a href="#router" class="nav-link">AI 路由</a>
+        <a href="#skills" class="nav-link">技能中心</a>
+        <a href="#wechat" class="nav-link">微信自动化</a>
+        <a href="#ecosystem" class="nav-link">生态版图</a>
+        <a href="#cta" class="nav-link nav-link--cta">立即体验</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ 英雄区 ═══════════════ -->
+  <section class="hero" id="hero">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge reveal">开源 · 免费 · 全能</div>
+      <h1 class="hero-title reveal">
+        <span class="hero-title-cn">十三香小龙虾</span>
+      </h1>
+      <p class="hero-slogan reveal">一壶十三香，煮沸 AI 江湖</p>
+      <p class="hero-desc reveal">
+        全栈式 AI 智能助手平台 — 13+ 大模型智能路由 · 63+ 内置超能技能 · 微信自动化帝国<br>
+        远程桌面控制 · 可视化工作流 · 全平台覆盖
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#cta" class="btn btn--primary">
+          <span class="btn-glow"></span>
+          🚀 开始使用
+        </a>
+        <a href="#features" class="btn btn--outline">了解更多 ↓</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-target="13">0</span><span class="hero-stat-plus">+</span>
+          <span class="hero-stat-label">AI 提供商</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-target="63">0</span><span class="hero-stat-plus">+</span>
+          <span class="hero-stat-label">内置技能</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-target="150">0</span><span class="hero-stat-plus">+</span>
+          <span class="hero-stat-label">API 接口</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-target="9">0</span><span class="hero-stat-plus">+</span>
+          <span class="hero-stat-label">IM 桥接</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>向下探索</span>
+      <div class="hero-scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 核心能力总览 ═══════════════ -->
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">CORE CAPABILITIES</span>
+        <h2 class="section-title">每一味香料，都是一个超能力</h2>
+        <p class="section-subtitle">六大核心引擎，构建你的 AI 全能管家</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card reveal" data-delay="0">
+          <div class="feature-card-icon">🎙️</div>
+          <div class="feature-card-glow"></div>
+          <h3>语音 AI 引擎</h3>
+          <p>6 大 STT + 5 大 TTS + 声音克隆 + 情绪感知 + 端到端语音直连</p>
+        </div>
+        <div class="feature-card reveal" data-delay="1">
+          <div class="feature-card-icon">🧠</div>
+          <div class="feature-card-glow"></div>
+          <h3>智能路由</h3>
+          <p>13+ AI 大模型自动切换，省钱/质量/速度三模式，自动容灾</p>
+        </div>
+        <div class="feature-card reveal" data-delay="2">
+          <div class="feature-card-icon">💬</div>
+          <div class="feature-card-glow"></div>
+          <h3>微信自动化</h3>
+          <p>AI 自动回复 · 朋友圈管理 · 群发系统 · 多账号管理 · 数据大屏</p>
+        </div>
+        <div class="feature-card reveal" data-delay="3">
+          <div class="feature-card-icon">🖥️</div>
+          <div class="feature-card-glow"></div>
+          <h3>远程桌面</h3>
+          <p>AI 驱动桌面自动化，截图 → OCR → 规划 → 执行，手机远程操控</p>
+        </div>
+        <div class="feature-card reveal" data-delay="4">
+          <div class="feature-card-icon">⚡</div>
+          <div class="feature-card-glow"></div>
+          <h3>工作流引擎</h3>
+          <p>可视化 DAG 编辑器，17 种节点类型，定时/事件/手动触发</p>
+        </div>
+        <div class="feature-card reveal" data-delay="5">
+          <div class="feature-card-icon">🌐</div>
+          <div class="feature-card-glow"></div>
+          <h3>全平台覆盖</h3>
+          <p>Web PWA + 安卓 APK + Electron 桌面 + LiveKit 实时语音 + Docker</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 交互式对话演示 ═══════════════ -->
+  <section class="section demo" id="demo">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">LIVE DEMO</span>
+        <h2 class="section-title">看看小龙虾的日常</h2>
+        <p class="section-subtitle">一段真实对话，展示 AI 全能管家的实力</p>
+      </div>
+      <div class="demo-layout reveal">
+        <div class="demo-phone">
+          <div class="demo-phone-notch"></div>
+          <div class="demo-phone-screen">
+            <div class="demo-chat-header">
+              <div class="demo-chat-avatar">🦞</div>
+              <div class="demo-chat-info">
+                <span class="demo-chat-name">十三香小龙虾</span>
+                <span class="demo-chat-status"><i class="demo-online-dot"></i>在线 · AI 管家</span>
+              </div>
+            </div>
+            <div class="demo-chat-body" id="demoChatBody"></div>
+            <div class="demo-chat-input">
+              <span class="demo-input-text" id="demoInputText">输入消息...</span>
+              <span class="demo-input-mic">🎤</span>
+            </div>
+          </div>
+        </div>
+        <div class="demo-sidebar">
+          <h3 class="demo-sidebar-title">✨ 本次演示展示了</h3>
+          <div class="demo-capability" data-cap="wake">
+            <div class="demo-cap-icon">🗣️</div>
+            <div>
+              <strong>语音唤醒</strong>
+              <span>"你好小龙" 一句话唤醒</span>
+            </div>
+          </div>
+          <div class="demo-capability" data-cap="skill">
+            <div class="demo-cap-icon">🌤️</div>
+            <div>
+              <strong>技能调用</strong>
+              <span>63+ 内置技能自动匹配</span>
+            </div>
+          </div>
+          <div class="demo-capability" data-cap="wechat">
+            <div class="demo-cap-icon">💬</div>
+            <div>
+              <strong>微信自动化</strong>
+              <span>AI 代发微信消息</span>
+            </div>
+          </div>
+          <div class="demo-capability" data-cap="creative">
+            <div class="demo-cap-icon">✍️</div>
+            <div>
+              <strong>创意写作</strong>
+              <span>诗词文案信手拈来</span>
+            </div>
+          </div>
+          <button class="demo-replay-btn" id="demoReplay">🔄 重新播放</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 语音 AI 引擎 ═══════════════ -->
+  <section class="section voice" id="voice">
+    <div class="container">
+      <div class="split-layout">
+        <div class="split-left reveal">
+          <span class="section-tag">VOICE AI ENGINE</span>
+          <h2 class="section-title">用声音，唤醒你的 AI 管家</h2>
+          <p class="section-subtitle">说一句"你好小龙"，AI 随时待命</p>
+          <div class="voice-features">
+            <div class="voice-feature">
+              <span class="voice-feature-icon">🎤</span>
+              <div>
+                <strong>6 大语音识别</strong>
+                <span>Whisper / FunASR / SenseVoice / 智谱 / DashScope / OpenAI</span>
+              </div>
+            </div>
+            <div class="voice-feature">
+              <span class="voice-feature-icon">🔊</span>
+              <div>
+                <strong>5 大语音合成</strong>
+                <span>ChatterboxTTS / Edge-TTS / ElevenLabs / CosyVoice / XTTS-v2</span>
+              </div>
+            </div>
+            <div class="voice-feature">
+              <span class="voice-feature-icon">🎭</span>
+              <div>
+                <strong>情绪感知</strong>
+                <span>实时检测语音情绪，TTS 自动调节语调表达</span>
+              </div>
+            </div>
+            <div class="voice-feature">
+              <span class="voice-feature-icon">🗣️</span>
+              <div>
+                <strong>声音克隆</strong>
+                <span>录制 10-30 秒，AI 克隆你的专属声音</span>
+              </div>
+            </div>
+            <div class="voice-feature">
+              <span class="voice-feature-icon">🔄</span>
+              <div>
+                <strong>端到端直连</strong>
+                <span>语音 → 语音，无需文字中转，极低延迟</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="split-right reveal">
+          <div class="voice-visualizer" id="voiceVisualizer">
+            <div class="voice-viz-ring voice-viz-ring--1"></div>
+            <div class="voice-viz-ring voice-viz-ring--2"></div>
+            <div class="voice-viz-ring voice-viz-ring--3"></div>
+            <div class="voice-viz-core">
+              <span>🦞</span>
+            </div>
+            <div class="voice-viz-bars">
+              <div class="voice-viz-bar"></div>
+              <div class="voice-viz-bar"></div>
+              <div class="voice-viz-bar"></div>
+              <div class="voice-viz-bar"></div>
+              <div class="voice-viz-bar"></div>
+              <div class="voice-viz-bar"></div>
+              <div class="voice-viz-bar"></div>
+              <div class="voice-viz-bar"></div>
+              <div class="voice-viz-bar"></div>
+            </div>
+            <div class="voice-viz-label">
+              <span class="voice-viz-dot"></span>
+              "你好小龙" — 语音助手已唤醒
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ AI 智能路由 ═══════════════ -->
+  <section class="section router" id="router">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">SMART AI ROUTER</span>
+        <h2 class="section-title">13+ AI 大脑，1 个入口</h2>
+        <p class="section-subtitle">智能路由自动选择最优模型，故障秒级切换</p>
+      </div>
+      <div class="router-modes reveal">
+        <div class="router-mode router-mode--active" data-mode="cost">
+          <span class="router-mode-icon">💰</span>
+          <span>省钱模式</span>
+        </div>
+        <div class="router-mode" data-mode="quality">
+          <span class="router-mode-icon">⭐</span>
+          <span>质量模式</span>
+        </div>
+        <div class="router-mode" data-mode="speed">
+          <span class="router-mode-icon">⚡</span>
+          <span>速度模式</span>
+        </div>
+      </div>
+      <div class="router-network reveal">
+        <div class="router-center">
+          <div class="router-brain">🦞</div>
+          <div class="router-pulse"></div>
+        </div>
+        <div class="router-nodes">
+          <div class="router-node" style="--angle: 0deg; --dist: 1">
+            <span class="router-node-name">OpenAI</span>
+          </div>
+          <div class="router-node" style="--angle: 27.7deg; --dist: 0.85">
+            <span class="router-node-name">Claude</span>
+          </div>
+          <div class="router-node" style="--angle: 55.4deg; --dist: 1">
+            <span class="router-node-name">DeepSeek</span>
+          </div>
+          <div class="router-node" style="--angle: 83.1deg; --dist: 0.9">
+            <span class="router-node-name">智谱</span>
+          </div>
+          <div class="router-node" style="--angle: 110.8deg; --dist: 1">
+            <span class="router-node-name">通义千问</span>
+          </div>
+          <div class="router-node" style="--angle: 138.5deg; --dist: 0.85">
+            <span class="router-node-name">百度文心</span>
+          </div>
+          <div class="router-node" style="--angle: 166.2deg; --dist: 1">
+            <span class="router-node-name">SiliconFlow</span>
+          </div>
+          <div class="router-node" style="--angle: 193.9deg; --dist: 0.9">
+            <span class="router-node-name">Ollama</span>
+          </div>
+          <div class="router-node" style="--angle: 221.6deg; --dist: 1">
+            <span class="router-node-name">Groq</span>
+          </div>
+          <div class="router-node" style="--angle: 249.3deg; --dist: 0.85">
+            <span class="router-node-name">Mistral</span>
+          </div>
+          <div class="router-node" style="--angle: 277deg; --dist: 1">
+            <span class="router-node-name">OpenRouter</span>
+          </div>
+          <div class="router-node" style="--angle: 304.7deg; --dist: 0.9">
+            <span class="router-node-name">Google</span>
+          </div>
+          <div class="router-node" style="--angle: 332.4deg; --dist: 1">
+            <span class="router-node-name">DashScope</span>
+          </div>
+        </div>
+      </div>
+      <div class="router-features reveal">
+        <div class="router-feat">
+          <span>🔄</span> 自动容灾切换
+        </div>
+        <div class="router-feat">
+          <span>📊</span> 余额实时监控
+        </div>
+        <div class="router-feat">
+          <span>🧊</span> 429 限频冷却
+        </div>
+        <div class="router-feat">
+          <span>🏠</span> 本地模型优先
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 技能中心 ═══════════════ -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">SKILL CENTER</span>
+        <h2 class="section-title">63+ 超能技能，即说即用</h2>
+        <p class="section-subtitle">10 大分类覆盖生活工作方方面面，部分技能离线可用</p>
+      </div>
+      <div class="skill-categories reveal">
+        <button class="skill-cat skill-cat--active" data-cat="all">全部</button>
+        <button class="skill-cat" data-cat="daily">日常工具</button>
+        <button class="skill-cat" data-cat="finance">金融理财</button>
+        <button class="skill-cat" data-cat="creative">创意写作</button>
+        <button class="skill-cat" data-cat="life">生活服务</button>
+        <button class="skill-cat" data-cat="tech">技术帮助</button>
+      </div>
+      <div class="skill-grid reveal">
+        <div class="skill-card" data-cat="daily">
+          <span class="skill-emoji">🧮</span><span>计算器</span>
+        </div>
+        <div class="skill-card" data-cat="daily">
+          <span class="skill-emoji">⏰</span><span>时间查询</span>
+        </div>
+        <div class="skill-card" data-cat="daily">
+          <span class="skill-emoji">📏</span><span>单位换算</span>
+        </div>
+        <div class="skill-card" data-cat="daily">
+          <span class="skill-emoji">📅</span><span>日期计算</span>
+        </div>
+        <div class="skill-card" data-cat="life">
+          <span class="skill-emoji">🌤️</span><span>天气查询</span>
+        </div>
+        <div class="skill-card" data-cat="life">
+          <span class="skill-emoji">🗺️</span><span>出行建议</span>
+        </div>
+        <div class="skill-card" data-cat="finance">
+          <span class="skill-emoji">🏠</span><span>房贷计算</span>
+        </div>
+        <div class="skill-card" data-cat="finance">
+          <span class="skill-emoji">💰</span><span>个税计算</span>
+        </div>
+        <div class="skill-card" data-cat="finance">
+          <span class="skill-emoji">💱</span><span>汇率转换</span>
+        </div>
+        <div class="skill-card" data-cat="life">
+          <span class="skill-emoji">🏥</span><span>健康建议</span>
+        </div>
+        <div class="skill-card" data-cat="life">
+          <span class="skill-emoji">🍳</span><span>菜谱推荐</span>
+        </div>
+        <div class="skill-card" data-cat="life">
+          <span class="skill-emoji">🏃</span><span>运动方案</span>
+        </div>
+        <div class="skill-card" data-cat="creative">
+          <span class="skill-emoji">✍️</span><span>诗词创作</span>
+        </div>
+        <div class="skill-card" data-cat="creative">
+          <span class="skill-emoji">🎉</span><span>祝福语</span>
+        </div>
+        <div class="skill-card" data-cat="creative">
+          <span class="skill-emoji">👶</span><span>智能取名</span>
+        </div>
+        <div class="skill-card" data-cat="creative">
+          <span class="skill-emoji">📱</span><span>社交文案</span>
+        </div>
+        <div class="skill-card" data-cat="tech">
+          <span class="skill-emoji">🧑‍💻</span><span>代码辅助</span>
+        </div>
+        <div class="skill-card" data-cat="tech">
+          <span class="skill-emoji">📝</span><span>文档写作</span>
+        </div>
+        <div class="skill-card" data-cat="life">
+          <span class="skill-emoji">😂</span><span>讲笑话</span>
+        </div>
+        <div class="skill-card" data-cat="life">
+          <span class="skill-emoji">📖</span><span>故事大王</span>
+        </div>
+        <div class="skill-card" data-cat="daily">
+          <span class="skill-emoji">🌍</span><span>翻译</span>
+        </div>
+        <div class="skill-card" data-cat="life">
+          <span class="skill-emoji">🎵</span><span>音乐推荐</span>
+        </div>
+        <div class="skill-card" data-cat="tech">
+          <span class="skill-emoji">🔧</span><span>技术问答</span>
+        </div>
+        <div class="skill-card" data-cat="daily">
+          <span class="skill-emoji">📊</span><span>数据分析</span>
+        </div>
+      </div>
+      <div class="skill-hint reveal">
+        <span>💡</span> 还有更多技能等你探索... 支持自定义技能开发
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 微信自动化 ═══════════════ -->
+  <section class="section wechat" id="wechat">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">WECHAT AUTOMATION</span>
+        <h2 class="section-title">你的微信，从此有了 AI 大脑</h2>
+        <p class="section-subtitle">业界最强微信自动化系统，一个人顶一个团队</p>
+      </div>
+      <div class="wechat-grid">
+        <div class="wechat-card wechat-card--large reveal" data-delay="0">
+          <div class="wechat-card-header">
+            <span class="wechat-card-icon">🤖</span>
+            <h3>智能自动回复</h3>
+          </div>
+          <p>AI 三轨融合引擎（wxauto + UIA + OCR），智能生成回复，支持人工审核一键放行</p>
+          <div class="wechat-card-visual">
+            <div class="wechat-track">
+              <span class="wechat-track-dot"></span>
+              <span>wxauto 读取</span>
+            </div>
+            <div class="wechat-track">
+              <span class="wechat-track-dot wechat-track-dot--2"></span>
+              <span>UIA 自动化</span>
+            </div>
+            <div class="wechat-track">
+              <span class="wechat-track-dot wechat-track-dot--3"></span>
+              <span>OCR 识别</span>
+            </div>
+            <div class="wechat-merge">→ AI 融合决策 → 最佳回复</div>
+          </div>
+        </div>
+        <div class="wechat-card reveal" data-delay="1">
+          <div class="wechat-card-header">
+            <span class="wechat-card-icon">📸</span>
+            <h3>朋友圈管理</h3>
+          </div>
+          <p>AI 自动写文案、智能配图、30 天内容日历、最佳发布时间、数据分析</p>
+        </div>
+        <div class="wechat-card reveal" data-delay="2">
+          <div class="wechat-card-header">
+            <span class="wechat-card-icon">📢</span>
+            <h3>群发系统</h3>
+          </div>
+          <p>按亲密度/关系筛选受众，AI 为每人生成个性化内容，模板化管理</p>
+        </div>
+        <div class="wechat-card reveal" data-delay="3">
+          <div class="wechat-card-header">
+            <span class="wechat-card-icon">👥</span>
+            <h3>联系人画像</h3>
+          </div>
+          <p>社交图谱、亲密度评分、兴趣标签、评论风格分析</p>
+        </div>
+        <div class="wechat-card reveal" data-delay="4">
+          <div class="wechat-card-header">
+            <span class="wechat-card-icon">📊</span>
+            <h3>数据大屏</h3>
+          </div>
+          <p>实时数据面板、时段热力图、情感分析仪表盘、效果追踪</p>
+        </div>
+        <div class="wechat-card reveal" data-delay="5">
+          <div class="wechat-card-header">
+            <span class="wechat-card-icon">🏢</span>
+            <h3>多账号管理</h3>
+          </div>
+          <p>多微信实例绑定、统一收件箱、跨账号联系人融合、健康监控</p>
+        </div>
+        <div class="wechat-card reveal" data-delay="6">
+          <div class="wechat-card-header">
+            <span class="wechat-card-icon">💬</span>
+            <h3>群聊管理</h3>
+          </div>
+          <p>群聊统计、重要消息提取、AI 群总结、消息路由</p>
+        </div>
+        <div class="wechat-card reveal" data-delay="7">
+          <div class="wechat-card-header">
+            <span class="wechat-card-icon">🛡️</span>
+            <h3>安全防控</h3>
+          </div>
+          <p>反风控系统、异常检测、账号健康监控、熔断保护</p>
+        </div>
+      </div>
+      <!-- 数据大屏预览 -->
+      <div class="dashboard-preview reveal">
+        <div class="dashboard-frame">
+          <div class="dashboard-topbar">
+            <span class="dashboard-title">📊 十三香小龙虾 · 数据大屏</span>
+            <span class="dashboard-time" id="dashboardTime">2026-03-16 14:30</span>
+          </div>
+          <div class="dashboard-grid">
+            <div class="dash-card">
+              <div class="dash-card-label">今日消息</div>
+              <div class="dash-card-num" data-target="1284">0</div>
+              <div class="dash-card-trend dash-card-trend--up">↑ 23%</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-label">自动回复</div>
+              <div class="dash-card-num" data-target="856">0</div>
+              <div class="dash-card-trend dash-card-trend--up">↑ 15%</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-label">朋友圈互动</div>
+              <div class="dash-card-num" data-target="342">0</div>
+              <div class="dash-card-trend dash-card-trend--up">↑ 8%</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-label">活跃联系人</div>
+              <div class="dash-card-num" data-target="567">0</div>
+              <div class="dash-card-trend">— 稳定</div>
+            </div>
+            <div class="dash-chart">
+              <div class="dash-chart-title">24 小时消息趋势</div>
+              <div class="dash-chart-bars">
+                <div class="dash-bar" style="--h: 30%"><span>0</span></div>
+                <div class="dash-bar" style="--h: 15%"><span>2</span></div>
+                <div class="dash-bar" style="--h: 8%"><span>4</span></div>
+                <div class="dash-bar" style="--h: 12%"><span>6</span></div>
+                <div class="dash-bar" style="--h: 45%"><span>8</span></div>
+                <div class="dash-bar" style="--h: 75%"><span>10</span></div>
+                <div class="dash-bar" style="--h: 90%"><span>12</span></div>
+                <div class="dash-bar" style="--h: 65%"><span>14</span></div>
+                <div class="dash-bar" style="--h: 80%"><span>16</span></div>
+                <div class="dash-bar" style="--h: 55%"><span>18</span></div>
+                <div class="dash-bar" style="--h: 40%"><span>20</span></div>
+                <div class="dash-bar" style="--h: 20%"><span>22</span></div>
+              </div>
+            </div>
+            <div class="dash-feed">
+              <div class="dash-feed-title">实时消息流</div>
+              <div class="dash-feed-list" id="dashFeedList">
+                <div class="dash-feed-item"><span class="dash-feed-badge dash-feed-badge--reply">回复</span>已自动回复「李总」的消息</div>
+                <div class="dash-feed-item"><span class="dash-feed-badge dash-feed-badge--moment">朋友圈</span>已发布今日产品推广</div>
+                <div class="dash-feed-item"><span class="dash-feed-badge dash-feed-badge--group">群聊</span>「产品交流群」新消息 +3</div>
+                <div class="dash-feed-item"><span class="dash-feed-badge dash-feed-badge--reply">回复</span>已自动回复「王经理」</div>
+                <div class="dash-feed-item"><span class="dash-feed-badge dash-feed-badge--alert">预警</span>账号2发送频率接近上限</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 远程桌面 + 工作流 ═══════════════ -->
+  <section class="section desktop" id="desktop">
+    <div class="container">
+      <div class="desktop-split">
+        <div class="desktop-panel reveal">
+          <span class="section-tag">REMOTE DESKTOP</span>
+          <h2 class="section-title">AI 替你操控电脑</h2>
+          <p>说出需求，AI 自动截图分析 → OCR 识别界面 → 规划操作步骤 → 精准执行</p>
+          <div class="desktop-demo">
+            <div class="desktop-screen">
+              <div class="desktop-screen-header">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="desktop-screen-body">
+                <div class="desktop-cursor"></div>
+                <div class="desktop-action">📸 截图</div>
+                <div class="desktop-action">🔍 OCR</div>
+                <div class="desktop-action">🧠 规划</div>
+                <div class="desktop-action">✅ 执行</div>
+              </div>
+              <div class="desktop-fps">30 FPS</div>
+            </div>
+          </div>
+          <div class="desktop-tags">
+            <span class="tag">实时串流</span>
+            <span class="tag">远程鼠标键盘</span>
+            <span class="tag">AI 自主操控</span>
+            <span class="tag">手势控制</span>
+            <span class="tag">摄像头视觉</span>
+          </div>
+        </div>
+        <div class="desktop-panel reveal">
+          <span class="section-tag">WORKFLOW ENGINE</span>
+          <h2 class="section-title">拖拽式工作流</h2>
+          <p>17 种节点类型，可视化 DAG 编辑，让 AI 按你设计的流程自动执行</p>
+          <div class="workflow-demo">
+            <div class="workflow-node workflow-node--trigger">⏰ 定时触发</div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-node workflow-node--ai">🧠 AI 生成</div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-node workflow-node--condition">❓ 条件判断</div>
+            <div class="workflow-branch">
+              <div class="workflow-branch-line">
+                <span>✅ 是</span>
+                <div class="workflow-node workflow-node--action">💬 微信发送</div>
+              </div>
+              <div class="workflow-branch-line">
+                <span>❌ 否</span>
+                <div class="workflow-node workflow-node--action">🔔 通知</div>
+              </div>
+            </div>
+          </div>
+          <div class="desktop-tags">
+            <span class="tag">17 种节点</span>
+            <span class="tag">定时触发</span>
+            <span class="tag">事件驱动</span>
+            <span class="tag">模板商店</span>
+            <span class="tag">执行历史</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 生态版图 ═══════════════ -->
+  <section class="section ecosystem" id="ecosystem">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">ECOSYSTEM</span>
+        <h2 class="section-title">一只龙虾的 AI 帝国</h2>
+        <p class="section-subtitle">全平台覆盖 × 全通道桥接，无处不在</p>
+      </div>
+
+      <div class="eco-row reveal">
+        <h3 class="eco-row-title">📱 客户端平台</h3>
+        <div class="eco-cards">
+          <div class="eco-card">
+            <div class="eco-card-icon">🌐</div>
+            <strong>浏览器 Web</strong>
+            <span>PWA + Service Worker</span>
+          </div>
+          <div class="eco-card">
+            <div class="eco-card-icon">📱</div>
+            <strong>安卓 APK</strong>
+            <span>Capacitor 8 原生</span>
+          </div>
+          <div class="eco-card">
+            <div class="eco-card-icon">🖥️</div>
+            <strong>桌面应用</strong>
+            <span>Electron 40</span>
+          </div>
+          <div class="eco-card">
+            <div class="eco-card-icon">🎙️</div>
+            <strong>实时语音</strong>
+            <span>LiveKit + Next.js</span>
+          </div>
+          <div class="eco-card">
+            <div class="eco-card-icon">🐳</div>
+            <strong>Docker</strong>
+            <span>一键容器部署</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="eco-row reveal">
+        <h3 class="eco-row-title">🔗 IM 桥接通道</h3>
+        <div class="eco-cards">
+          <div class="eco-card eco-card--bridge">
+            <div class="eco-card-icon">🔵</div>
+            <strong>飞书</strong>
+          </div>
+          <div class="eco-card eco-card--bridge">
+            <div class="eco-card-icon">🔷</div>
+            <strong>钉钉</strong>
+          </div>
+          <div class="eco-card eco-card--bridge">
+            <div class="eco-card-icon">🟢</div>
+            <strong>企业微信</strong>
+          </div>
+          <div class="eco-card eco-card--bridge">
+            <div class="eco-card-icon">✈️</div>
+            <strong>Telegram</strong>
+          </div>
+          <div class="eco-card eco-card--bridge">
+            <div class="eco-card-icon">💜</div>
+            <strong>Discord</strong>
+          </div>
+          <div class="eco-card eco-card--bridge">
+            <div class="eco-card-icon">💚</div>
+            <strong>WhatsApp</strong>
+          </div>
+          <div class="eco-card eco-card--bridge">
+            <div class="eco-card-icon">🟡</div>
+            <strong>Slack</strong>
+          </div>
+          <div class="eco-card eco-card--bridge">
+            <div class="eco-card-icon">🍎</div>
+            <strong>Siri</strong>
+          </div>
+          <div class="eco-card eco-card--bridge">
+            <div class="eco-card-icon">🏠</div>
+            <strong>HomeAssistant</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="eco-row reveal">
+        <h3 class="eco-row-title">🛡️ 管理后台（25 页）</h3>
+        <div class="eco-admin-tags">
+          <span>仪表盘</span><span>工作流</span><span>执行历史</span>
+          <span>朋友圈</span><span>数据分析</span><span>群发消息</span>
+          <span>素材库</span><span>联系人画像</span><span>本地模型</span>
+          <span>消息路由</span><span>任务日历</span><span>多账号管理</span>
+          <span>统一收件箱</span><span>消息转发</span><span>朋友圈协作</span>
+          <span>账号健康</span><span>联系人融合</span><span>模板商店</span>
+          <span>知识库</span><span>智能日报</span><span>数据大屏</span>
+          <span>情感分析</span><span>群聊管理</span><span>流程编辑器</span>
+          <span>插件市场</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 数据统计 ═══════════════ -->
+  <section class="section stats" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="150">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">API 接口</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="25">0</span>
+          <span class="stat-label">管理页面</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="17">0</span>
+          <span class="stat-label">工作流节点</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="7">0</span>
+          <span class="stat-label">数据库</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="5">0</span>
+          <span class="stat-label">客户端平台</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="22">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">技能分类</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 竞品对比 ═══════════════ -->
+  <section class="section comparison" id="comparison">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">WHY US</span>
+        <h2 class="section-title">为什么选择十三香小龙虾？</h2>
+      </div>
+      <div class="comparison-table-wrap reveal">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>对比维度</th>
+              <th class="comparison-us">🦞 十三香小龙虾</th>
+              <th>普通 AI 助手</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AI 提供商</td>
+              <td class="comparison-us"><strong>13+ 家</strong>，自动路由</td>
+              <td>1-2 家</td>
+            </tr>
+            <tr>
+              <td>语音能力</td>
+              <td class="comparison-us"><strong>STT + TTS + 克隆 + S2S</strong></td>
+              <td>仅文字</td>
+            </tr>
+            <tr>
+              <td>微信自动化</td>
+              <td class="comparison-us"><strong>完整生态</strong>（回复/朋友圈/群发/多账号）</td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>远程桌面</td>
+              <td class="comparison-us"><strong>AI 驱动自动操控</strong></td>
+              <td>无</td>
+            </tr>
+            <tr>
+              <td>工作流</td>
+              <td class="comparison-us"><strong>17 节点可视化编辑</strong></td>
+              <td>无或简单</td>
+            </tr>
+            <tr>
+              <td>技能</td>
+              <td class="comparison-us"><strong>63+ 内置 + 自定义</strong></td>
+              <td>少于 10</td>
+            </tr>
+            <tr>
+              <td>企业 IM</td>
+              <td class="comparison-us"><strong>9 大平台桥接</strong></td>
+              <td>1-2 个</td>
+            </tr>
+            <tr>
+              <td>部署方式</td>
+              <td class="comparison-us"><strong>安装包 / Docker / 源码</strong></td>
+              <td>仅 SaaS</td>
+            </tr>
+            <tr>
+              <td>开源</td>
+              <td class="comparison-us"><strong>✅ 完全开源</strong></td>
+              <td>❌ 闭源</td>
+            </tr>
+            <tr>
+              <td>价格</td>
+              <td class="comparison-us"><strong>🆓 免费</strong></td>
+              <td>💲 收费</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="section cta-section" id="cta">
+    <div class="container">
+      <div class="cta-content reveal">
+        <h2 class="cta-title">准备好煮沸你的 AI 江湖了吗？</h2>
+        <p class="cta-desc">开源免费，5 分钟部署，即刻拥有你的 AI 全能管家</p>
+        <div class="cta-buttons">
+          <a href="#" class="btn btn--primary btn--large">
+            <span class="btn-glow"></span>
+            🦞 立即下载
+          </a>
+          <a href="#" class="btn btn--outline btn--large">
+            ⭐ GitHub Star
+          </a>
+          <a href="#" class="btn btn--outline btn--large">
+            💬 加入社区
+          </a>
+        </div>
+        <div class="cta-deploy">
+          <p>一键安装：</p>
+          <div class="cta-code">
+            <code>curl -fsSL https://install.shisanxiang.ai | bash</code>
+            <button class="cta-copy" onclick="navigator.clipboard.writeText('curl -fsSL https://install.shisanxiang.ai | bash')">复制</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 页脚 ═══════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="footer-logo">🦞</span>
+          <span class="footer-name">十三香小龙虾</span>
+          <p class="footer-desc">一壶十三香，煮沸 AI 江湖</p>
+        </div>
+        <div class="footer-col">
+          <h4>产品</h4>
+          <a href="#">功能介绍</a>
+          <a href="#">使用文档</a>
+          <a href="#">更新日志</a>
+          <a href="#">路线图</a>
+        </div>
+        <div class="footer-col">
+          <h4>社区</h4>
+          <a href="#">GitHub</a>
+          <a href="#">Discord</a>
+          <a href="#">微信群</a>
+          <a href="#">贡献指南</a>
+        </div>
+        <div class="footer-col">
+          <h4>资源</h4>
+          <a href="#">API 文档</a>
+          <a href="#">技能开发</a>
+          <a href="#">插件市场</a>
+          <a href="#">部署指南</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 十三香小龙虾 · 开源 · 免费 · 全能</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部 -->
+  <button class="back-to-top" id="backToTop" aria-label="返回顶部">↑</button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
