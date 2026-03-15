@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Sitemap: https://13x.lol/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /

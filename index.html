@@ -10,12 +10,41 @@
   <meta property="og:title" content="十三香小龙虾 — 一壶十三香，煮沸 AI 江湖">
   <meta property="og:description" content="全栈式 AI 智能助手平台。13+ 大模型智能路由、63+ 内置技能、微信自动化、远程桌面、可视化工作流。开源免费。">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://13x.lol/">
   <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://13x.lol/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="十三香小龙虾">
+  <meta name="twitter:image" content="https://13x.lol/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="十三香小龙虾 — AI 全能助手平台">
   <meta name="twitter:description" content="13+ 大模型 · 63+ 技能 · 微信自动化 · 开源免费">
+  <link rel="canonical" href="https://13x.lol/">
+  <link rel="alternate" hreflang="zh" href="https://13x.lol/">
+  <link rel="alternate" hreflang="en" href="https://13x.lol/?lang=en">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "十三香小龙虾",
+    "alternateName": "ShiSanXiang Crayfish AI",
+    "description": "全栈式 AI 智能助手平台。13+ 大模型智能路由、63+ 内置技能、微信自动化、远程桌面、可视化工作流。",
+    "url": "https://13x.lol",
+    "applicationCategory": "AI Assistant",
+    "operatingSystem": "Windows, Linux, macOS, Android, Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
+    "author": { "@type": "Organization", "name": "十三香小龙虾", "url": "https://13x.lol" },
+    "sourceOrganization": { "@type": "Organization", "name": "十三香小龙虾" },
+    "isAccessibleForFree": true,
+    "license": "https://opensource.org/licenses/MIT",
+    "codeRepository": "https://github.com/victor2025PH/13xlol"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="preload" href="js/main.js" as="script">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="logo.svg">
@@ -46,8 +75,10 @@
         <a href="#skills" class="nav-link" data-i18n="nav.skills">技能中心</a>
         <a href="#wechat" class="nav-link" data-i18n="nav.wechat">微信自动化</a>
         <a href="#ecosystem" class="nav-link" data-i18n="nav.ecosystem">生态版图</a>
+        <a href="#personas" class="nav-link" data-i18n="nav.personas">使用场景</a>
         <a href="#cta" class="nav-link nav-link--cta" data-i18n="nav.cta">立即体验</a>
         <button class="nav-lang" id="langToggle" title="Switch Language">EN</button>
+        <button class="nav-theme" id="themeToggle" title="切换主题">☀️</button>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="菜单">
         <span></span><span></span><span></span>
@@ -801,6 +832,52 @@
         <div class="stat-item reveal">
           <span class="stat-num" data-target="22">0</span><span class="stat-plus">+</span>
           <span class="stat-label">技能分类</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 用户场景 ═══════════════ -->
+  <section class="section personas" id="personas">
+    <div class="container">
+      <h2 class="section-title reveal" data-i18n="personas.title">谁在用十三香？</h2>
+      <p class="section-desc reveal" data-i18n="personas.desc">无论你是谁，都能在这锅龙虾里找到自己那味香料</p>
+      <div class="persona-grid">
+        <div class="persona-card reveal">
+          <div class="persona-avatar">🧑‍💻</div>
+          <h3 class="persona-name" data-i18n="personas.dev.name">独立开发者</h3>
+          <p class="persona-scene" data-i18n="personas.dev.desc">用 AI 路由省 Token 费，工作流引擎自动化测试 & 部署，一个人顶一个团队</p>
+          <div class="persona-tag">节省 70% AI 成本</div>
+        </div>
+        <div class="persona-card reveal">
+          <div class="persona-avatar">📱</div>
+          <h3 class="persona-name" data-i18n="personas.wechat.name">微商 / 社群运营</h3>
+          <p class="persona-scene" data-i18n="personas.wechat.desc">微信自动回复 + 朋友圈 AI 文案 + 群管 + 批量加好友，躺着就把钱赚了</p>
+          <div class="persona-tag">效率提升 10x</div>
+        </div>
+        <div class="persona-card reveal">
+          <div class="persona-avatar">🏢</div>
+          <h3 class="persona-name" data-i18n="personas.team.name">小团队 / 创业公司</h3>
+          <p class="persona-scene" data-i18n="personas.team.desc">飞书、钉钉、企微全打通，知识库 + 工作流替代半个中台，省下百万 SaaS 费</p>
+          <div class="persona-tag">替代 5+ SaaS</div>
+        </div>
+        <div class="persona-card reveal">
+          <div class="persona-avatar">🎤</div>
+          <h3 class="persona-name" data-i18n="personas.voice.name">语音交互爱好者</h3>
+          <p class="persona-scene" data-i18n="personas.voice.desc">唤醒词 + 语音克隆 + 情绪识别，打造专属 AI 语音助手，比 Siri 听话 100 倍</p>
+          <div class="persona-tag">真·智能管家</div>
+        </div>
+        <div class="persona-card reveal">
+          <div class="persona-avatar">🏠</div>
+          <h3 class="persona-name" data-i18n="personas.home.name">智能家居玩家</h3>
+          <p class="persona-scene" data-i18n="personas.home.desc">HomeAssistant 桥接 + 语音控制全屋设备，"你好小龙，关灯" 比按开关还快</p>
+          <div class="persona-tag">声控全屋</div>
+        </div>
+        <div class="persona-card reveal">
+          <div class="persona-avatar">🔧</div>
+          <h3 class="persona-name" data-i18n="personas.ops.name">运维 / IT 管理员</h3>
+          <p class="persona-scene" data-i18n="personas.ops.desc">远程桌面 AI 操控 + 服务器巡检工作流 + Telegram 报警，7x24 无人值守</p>
+          <div class="persona-tag">自动化运维</div>
         </div>
       </div>
     </div>

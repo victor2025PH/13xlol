@@ -16,6 +16,23 @@
     setTimeout(() => loader.classList.add('hidden'), 4000);
   }
 
+  // ═══════════════ Theme Toggle ═══════════════
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+      themeToggle.textContent = saved === 'light' ? '🌙' : '☀️';
+    }
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.textContent = next === 'light' ? '🌙' : '☀️';
+    });
+  }
+
   // ═══════════════ Particle System ═══════════════
   const canvas = document.getElementById('heroCanvas');
   if (canvas) {
@@ -278,7 +295,21 @@
     en: {
       'nav.features': 'Features', 'nav.voice': 'Voice AI', 'nav.router': 'AI Router',
       'nav.skills': 'Skills', 'nav.wechat': 'WeChat', 'nav.ecosystem': 'Ecosystem',
-      'nav.cta': 'Get Started',
+      'nav.personas': 'Use Cases', 'nav.cta': 'Get Started',
+      'personas.title': 'Who Uses This?',
+      'personas.desc': 'Whatever your role, there\'s a spice for you in this pot',
+      'personas.dev.name': 'Indie Developer',
+      'personas.dev.desc': 'Save tokens with AI router, automate testing & deploy with workflows — one person, one team',
+      'personas.wechat.name': 'Social Commerce',
+      'personas.wechat.desc': 'WeChat auto-reply + AI copywriting + group management + mass friending — money while you sleep',
+      'personas.team.name': 'Startup / Small Team',
+      'personas.team.desc': 'Feishu, DingTalk, WeCom all connected — knowledge base + workflow replaces half your SaaS stack',
+      'personas.voice.name': 'Voice AI Enthusiast',
+      'personas.voice.desc': 'Wake word + voice clone + emotion detect — build your personal AI assistant, 100x better than Siri',
+      'personas.home.name': 'Smart Home Player',
+      'personas.home.desc': 'HomeAssistant bridge + voice control — "Hey Crayfish, lights off" faster than any switch',
+      'personas.ops.name': 'IT Admin / DevOps',
+      'personas.ops.desc': 'Remote desktop AI + server patrol workflows + Telegram alerts — 24/7 unattended ops',
       'hero.badge': 'Open Source · Free · All-in-One',
       'hero.title': 'ShiSanXiang',
       'hero.slogan': '13 Spices, One AI Empire',
@@ -288,7 +319,7 @@
     zh: {
       'nav.features': '核心能力', 'nav.voice': '语音引擎', 'nav.router': 'AI 路由',
       'nav.skills': '技能中心', 'nav.wechat': '微信自动化', 'nav.ecosystem': '生态版图',
-      'nav.cta': '立即体验',
+      'nav.personas': '使用场景', 'nav.cta': '立即体验',
       'hero.badge': '开源 · 免费 · 全能',
       'hero.title': '十三香小龙虾',
       'hero.slogan': '一壶十三香，煮沸 AI 江湖',

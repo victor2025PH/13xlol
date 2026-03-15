@@ -90,7 +90,7 @@ def main():
     sftp = ssh.open_sftp()
     for root, dirs, files in os.walk(LOCAL_DIR):
         for fname in files:
-            if fname in ('deploy.py', '.git') or fname.startswith('.'):
+            if fname in ('deploy.py', 'setup_ssl.py', '.git') or fname.startswith('.'):
                 continue
             local_path = os.path.join(root, fname)
             rel_path = os.path.relpath(local_path, LOCAL_DIR).replace("\\", "/")
