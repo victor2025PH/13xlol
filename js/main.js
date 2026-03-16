@@ -90,9 +90,12 @@
       }
     }
 
+    const isMobile = window.innerWidth < 768;
     function initParticles() {
       resize();
-      const count = Math.min(Math.floor((width * height) / 8000), 200);
+      const maxP = isMobile ? 40 : 200;
+      const divisor = isMobile ? 20000 : 8000;
+      const count = Math.min(Math.floor((width * height) / divisor), maxP);
       particles = [];
       for (let i = 0; i < count; i++) {
         particles.push(new Particle());
@@ -100,6 +103,7 @@
     }
 
     function drawConnections() {
+      if (isMobile) return;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -331,6 +335,20 @@
       'faq.a5': 'We support <strong>13+ AI providers</strong>: OpenAI, Anthropic, Google Gemini, DeepSeek, Zhipu GLM, Qwen, Baidu ERNIE, Moonshot, Yi, Groq, Mistral, Ollama local models, and more. Full Chinese model coverage, plus fully offline local models via Ollama.',
       'faq.q6': 'Is my data safe? Will my chats be leaked?',
       'faq.a6': '<strong>All data stays on your own server</strong>. We collect zero user data. Code is fully open-source for audit. AI API calls go directly through your own keys — no middleman proxy.',
+      'roadmap.title': 'Evolution Roadmap',
+      'roadmap.desc': 'This crayfish keeps growing',
+      'roadmap.m1.title': 'Core Engine Launch',
+      'roadmap.m1.desc': 'AI Router · Voice Engine · Skills Center · Basic WeChat Automation',
+      'roadmap.m2.title': 'Cross-Platform',
+      'roadmap.m2.desc': 'Browser PWA · Android APK · Windows Desktop · IM Bridge Matrix',
+      'roadmap.m3.title': 'WeChat Empire',
+      'roadmap.m3.desc': 'Triple-track auto-reply · Moments AI · Group management · 3-layer anti-risk',
+      'roadmap.m4.title': 'v2.0 ShiSanXiang',
+      'roadmap.m4.desc': 'Brand upgrade · Website launch · Visual workflow · Remote desktop AI · 63+ skills',
+      'roadmap.m5.title': 'Plugin Marketplace',
+      'roadmap.m5.desc': 'Community skill store · Third-party workflow templates · One-click plugin ecosystem',
+      'roadmap.m6.title': 'Multi-Agent Collaboration',
+      'roadmap.m6.desc': 'Agent-to-Agent communication · Autonomous task decomposition · Multi-crayfish ops',
       'community.title': 'Join the Crayfish Gang',
       'community.desc': 'Every feature comes from real user needs — let\'s build the AI future together',
       'community.stat1': 'Issue Response',

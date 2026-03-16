@@ -48,8 +48,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="logo.svg">
+  <style>
+    .loader{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:#080808;transition:opacity .5s}
+    .loader.hidden{opacity:0;pointer-events:none}
+    .loader-icon{font-size:64px;animation:loaderPulse 1.5s ease-in-out infinite}
+    @keyframes loaderPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;transition:all .35s}
+    body{margin:0;background:#080808;color:#e8e6e1;font-family:'Noto Sans SC',system-ui,sans-serif}
+  </style>
 </head>
 <body>
+  <a href="#features" class="skip-link">跳过导航，直达内容</a>
 
   <!-- ═══════════════ Loading Screen ═══════════════ -->
   <div class="loader" id="loader">
@@ -62,7 +71,7 @@
   </div>
 
   <!-- ═══════════════ 导航栏 ═══════════════ -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" role="navigation" aria-label="主导航">
     <div class="nav-inner">
       <a href="#hero" class="nav-brand">
         <span class="nav-logo">🦞</span>
@@ -87,8 +96,9 @@
     </div>
   </nav>
 
+  <main>
   <!-- ═══════════════ 英雄区 ═══════════════ -->
-  <section class="hero" id="hero">
+  <section class="hero" id="hero" role="banner">
     <canvas class="hero-canvas" id="heroCanvas"></canvas>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -957,6 +967,64 @@
     </div>
   </section>
 
+  <!-- ═══════════════ Roadmap ═══════════════ -->
+  <section class="section roadmap" id="roadmap">
+    <div class="container">
+      <h2 class="section-title reveal" data-i18n="roadmap.title">进化路线图</h2>
+      <p class="section-desc reveal" data-i18n="roadmap.desc">这只龙虾还在不断长大</p>
+      <div class="timeline">
+        <div class="timeline-item timeline-done reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2024 Q4</span>
+            <h3 data-i18n="roadmap.m1.title">核心引擎上线</h3>
+            <p data-i18n="roadmap.m1.desc">AI 路由 · 语音引擎 · 技能中心 · 基础微信自动化</p>
+          </div>
+        </div>
+        <div class="timeline-item timeline-done reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2025 Q1</span>
+            <h3 data-i18n="roadmap.m2.title">全平台覆盖</h3>
+            <p data-i18n="roadmap.m2.desc">浏览器 PWA · Android APK · Windows 桌面端 · IM 桥接矩阵</p>
+          </div>
+        </div>
+        <div class="timeline-item timeline-done reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2025 Q3</span>
+            <h3 data-i18n="roadmap.m3.title">微信帝国</h3>
+            <p data-i18n="roadmap.m3.desc">三轨融合自动回复 · 朋友圈 AI · 群管系统 · 反风控三层防护</p>
+          </div>
+        </div>
+        <div class="timeline-item timeline-active reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2026 Q1</span>
+            <h3 data-i18n="roadmap.m4.title">v2.0 十三香</h3>
+            <p data-i18n="roadmap.m4.desc">品牌升级 · 官网上线 · 可视化工作流 · 远程桌面 AI · 63+ 技能</p>
+          </div>
+        </div>
+        <div class="timeline-item timeline-future reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2026 Q2</span>
+            <h3 data-i18n="roadmap.m5.title">插件市场</h3>
+            <p data-i18n="roadmap.m5.desc">社区技能商店 · 第三方工作流模板 · 一键安装插件生态</p>
+          </div>
+        </div>
+        <div class="timeline-item timeline-future reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-date">2026 Q4</span>
+            <h3 data-i18n="roadmap.m6.title">多智能体协作</h3>
+            <p data-i18n="roadmap.m6.desc">Agent-to-Agent 通信 · 自主任务分解 · 多龙虾协同作战</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════ 快速上手 ═══════════════ -->
   <section class="section quickstart" id="quickstart">
     <div class="container">
@@ -1133,8 +1201,10 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ═══════════════ 页脚 ═══════════════ -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -1170,7 +1240,7 @@
   <!-- 返回顶部 -->
   <button class="back-to-top" id="backToTop" aria-label="返回顶部">↑</button>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
   <script>
   (function(){
     var bp = document.createElement('script');

@@ -1307,6 +1307,106 @@ th.comparison-us {
   color: var(--c-primary);
 }
 
+/* ═══════════════ Roadmap Timeline ═══════════════ */
+.roadmap {
+  background: var(--c-bg-2);
+}
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 48px auto 0;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--c-primary), var(--c-gold) 60%, var(--c-border) 80%);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 32px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -33px;
+  top: 20px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--c-border);
+  background: var(--c-bg-2);
+  z-index: 2;
+  transition: all 0.4s;
+}
+.timeline-done .timeline-dot {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  box-shadow: 0 0 12px var(--c-primary-glow);
+}
+.timeline-active .timeline-dot {
+  background: var(--c-gold);
+  border-color: var(--c-gold);
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.5);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); transform: scale(1); }
+  50% { box-shadow: 0 0 24px rgba(255, 215, 0, 0.7); transform: scale(1.2); }
+}
+.timeline-future .timeline-dot {
+  border-style: dashed;
+  border-color: var(--c-text-dimmer);
+}
+.timeline-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: all var(--transition);
+}
+.timeline-item:hover .timeline-card {
+  border-color: var(--c-primary);
+  box-shadow: 0 8px 32px var(--c-primary-glow);
+  transform: translateX(4px);
+}
+.timeline-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.timeline-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 6px 0 4px;
+}
+.timeline-card p {
+  font-size: 13px;
+  color: var(--c-text-dim);
+  line-height: 1.6;
+  margin: 0;
+}
+.timeline-future .timeline-card {
+  opacity: 0.6;
+}
+.timeline-future:hover .timeline-card {
+  opacity: 1;
+}
+@media (max-width: 768px) {
+  .timeline { padding-left: 32px; }
+  .timeline::before { left: 11px; }
+  .timeline-dot { left: -28px; width: 12px; height: 12px; }
+  .timeline-card { padding: 16px 18px; }
+  .timeline-card h3 { font-size: 15px; }
+}
+
 /* ═══════════════ Quick Start Terminal ═══════════════ */
 .quickstart {
   background: var(--c-bg-2);
@@ -1803,21 +1903,30 @@ th.comparison-us {
     background: rgba(8, 8, 8, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
-    padding: 32px 24px;
-    gap: 4px;
+    padding: 24px 20px;
+    gap: 2px;
+    overflow-y: auto;
+  }
+  [data-theme="light"] .nav-links {
+    background: rgba(250, 248, 245, 0.98);
   }
   .nav-links.open { display: flex; }
   .nav-link {
     padding: 14px 20px;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 12px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
   .nav-toggle { display: flex; }
   .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .nav-toggle.open span:nth-child(2) { opacity: 0; }
   .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-  .section { padding: 80px 0; }
+  .section { padding: 64px 0; }
+  .section-title { font-size: 28px; }
+  .section-desc { font-size: 14px; }
   .feature-grid { grid-template-columns: 1fr; }
   .wechat-grid { grid-template-columns: 1fr; }
   .router-network { width: 300px; height: 300px; }
@@ -1843,17 +1952,29 @@ th.comparison-us {
 
   .hero-stats { gap: 24px; }
   .hero-stat-num { font-size: 32px; }
+  .hero-title-cn { font-size: 48px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .stat-num { font-size: 36px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .cta-code { flex-direction: column; gap: 10px; }
   .eco-card { min-width: 120px; }
   .skill-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+
+  .persona-grid { grid-template-columns: 1fr; gap: 16px; }
+  .persona-card { padding: 24px 20px; }
+  .terminal-body { font-size: 12px; padding: 14px; }
+  .terminal-line { white-space: pre-wrap; word-break: break-all; }
+  .faq-q { font-size: 15px; padding: 16px 18px; }
+  .faq-a { padding: 0 18px 16px; font-size: 13px; }
+  .community-grid { grid-template-columns: 1fr; }
+  .community-stats { gap: 24px; flex-wrap: wrap; }
 }
 
 @media (max-width: 480px) {
   .hero-content { padding: 100px 16px 60px; }
-  .hero-slogan { letter-spacing: 2px; }
+  .hero-title-cn { font-size: 36px; }
+  .hero-slogan { letter-spacing: 2px; font-size: 14px; }
+  .hero-desc { font-size: 13px; }
   .hero-cta { flex-direction: column; align-items: center; }
   .btn--large { width: 100%; justify-content: center; }
   .desktop-panel { padding: 24px; }
@@ -1867,6 +1988,44 @@ th.comparison-us {
       translateY(calc(-100px * var(--dist)))
       rotate(calc(-1 * var(--angle)));
   }
+  .section { padding: 48px 0; }
+  .section-title { font-size: 24px; }
+  .terminal { border-radius: 8px; }
+  .terminal-body { font-size: 11px; padding: 12px; }
+  .terminal-output { font-size: 10px; }
+  .qs-features { gap: 8px; }
+  .qs-chip { font-size: 11px; padding: 5px 12px; }
+  .community-card { padding: 28px 20px; }
+  .community-stat-num { font-size: 22px; }
+}
+
+/* ─── Accessibility: Skip Link ─── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--c-primary);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  z-index: 10001;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ─── Accessibility: Focus Visible ─── */
+:focus-visible {
+  outline: 2px solid var(--c-gold);
+  outline-offset: 3px;
+}
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* ─── Accessibility: Reduced Motion ─── */
