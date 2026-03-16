@@ -1,7 +1,6 @@
 /**
  * 十三香小龙虾 — 官方宣传网站交互脚本
- * Phase 1: Particle system, scroll animations, counters, navigation
- * Phase 2: Loading screen, chat demo, dashboard, visual FX
+ * Restructured: 8-section conversion architecture
  */
 
 (function () {
@@ -50,10 +49,7 @@
     }
 
     class Particle {
-      constructor() {
-        this.reset();
-      }
-
+      constructor() { this.reset(); }
       reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
@@ -66,24 +62,18 @@
         this.life = Math.random() * 300 + 200;
         this.age = 0;
       }
-
       update() {
         const dx = mouseX - this.x;
         const dy = mouseY - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          this.x -= dx * 0.008;
-          this.y -= dy * 0.008;
-        }
+        if (dist < 120) { this.x -= dx * 0.008; this.y -= dy * 0.008; }
         this.x += this.speedX;
         this.y += this.speedY;
         this.age++;
         if (this.age > this.life || this.x < -10 || this.x > width + 10 || this.y < -10 || this.y > height + 10) {
-          this.reset();
-          this.y = height + 5;
+          this.reset(); this.y = height + 5;
         }
       }
-
       draw() {
         const fade = 1 - this.age / this.life;
         ctx.beginPath();
@@ -99,9 +89,7 @@
       const divisor = isMobile ? 20000 : 8000;
       const count = Math.min(Math.floor((width * height) / divisor), maxP);
       particles = [];
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-      }
+      for (let i = 0; i < count; i++) particles.push(new Particle());
     }
 
     function drawConnections() {
@@ -126,10 +114,7 @@
 
     function animate() {
       ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
+      particles.forEach(p => { p.update(); p.draw(); });
       drawConnections();
       requestAnimationFrame(animate);
     }
@@ -139,11 +124,7 @@
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
     });
-
-    window.addEventListener('resize', () => {
-      resize();
-    });
-
+    window.addEventListener('resize', resize);
     initParticles();
     animate();
   }
@@ -154,16 +135,11 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const delay = entry.target.dataset.delay || 0;
-        setTimeout(() => {
-          entry.target.classList.add('revealed');
-        }, delay * 120);
+        setTimeout(() => entry.target.classList.add('revealed'), delay * 120);
         revealObserver.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px'
-  });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   revealElements.forEach(el => revealObserver.observe(el));
 
   // ═══════════════ Counter Animation ═══════════════
@@ -188,11 +164,8 @@
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       el.textContent = Math.floor(target * eased);
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        el.textContent = target;
-      }
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
     }
     requestAnimationFrame(step);
   }
@@ -203,24 +176,19 @@
   const navLinks = document.getElementById('navLinks');
   const sections = document.querySelectorAll('.section, .hero');
   const navLinkEls = document.querySelectorAll('.nav-link:not(.nav-link--cta)');
-
   const scrollProgressBar = document.getElementById('scrollProgress');
 
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
-
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     if (scrollProgressBar && docHeight > 0) {
       scrollProgressBar.style.width = ((scrollTop / docHeight) * 100) + '%';
     }
-
     let current = '';
     sections.forEach(section => {
       const rect = section.getBoundingClientRect();
-      if (rect.top <= 200 && rect.bottom > 200) {
-        current = section.id;
-      }
+      if (rect.top <= 200 && rect.bottom > 200) current = section.id;
     });
     navLinkEls.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
@@ -232,7 +200,6 @@
       navToggle.classList.toggle('open');
       navLinks.classList.toggle('open');
     });
-
     navLinks.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navToggle.classList.remove('open');
@@ -240,6 +207,33 @@
       });
     });
   }
+
+  // ═══════════════ Showcase Tab Switching ═══════════════
+  const showcaseTabs = document.querySelectorAll('.showcase-tab');
+  const showcasePanels = document.querySelectorAll('.showcase-panel');
+
+  showcaseTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      showcaseTabs.forEach(t => {
+        t.classList.remove('showcase-tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('showcase-tab--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      showcasePanels.forEach(panel => {
+        if (panel.dataset.panel === target) {
+          panel.classList.add('showcase-panel--active');
+          panel.style.animation = 'none';
+          panel.offsetHeight;
+          panel.style.animation = '';
+        } else {
+          panel.classList.remove('showcase-panel--active');
+        }
+      });
+    });
+  });
 
   // ═══════════════ Skill Category Filter ═══════════════
   const skillCats = document.querySelectorAll('.skill-cat');
@@ -251,11 +245,8 @@
       btn.classList.add('skill-cat--active');
       const cat = btn.dataset.cat;
       skillCards.forEach(card => {
-        if (cat === 'all' || card.dataset.cat === cat) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
+        if (cat === 'all' || card.dataset.cat === cat) card.classList.remove('hidden');
+        else card.classList.add('hidden');
       });
     });
   });
@@ -269,7 +260,7 @@
     });
   });
 
-  // ═══════════════ Smooth Scroll for Anchor Links ═══════════════
+  // ═══════════════ Smooth Scroll ═══════════════
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -280,7 +271,7 @@
     });
   });
 
-  // ═══════════════ Back to Top Button ═══════════════
+  // ═══════════════ Back to Top ═══════════════
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {
     window.addEventListener('scroll', () => {
@@ -291,13 +282,11 @@
     });
   }
 
-  // ═══════════════ Router Node Hover Effect ═══════════════
+  // ═══════════════ Router Node Hover ═══════════════
   const routerNodes = document.querySelectorAll('.router-node');
   routerNodes.forEach(node => {
     node.addEventListener('mouseenter', () => {
-      routerNodes.forEach(n => {
-        if (n !== node) n.style.opacity = '0.4';
-      });
+      routerNodes.forEach(n => { if (n !== node) n.style.opacity = '0.4'; });
     });
     node.addEventListener('mouseleave', () => {
       routerNodes.forEach(n => n.style.opacity = '1');
@@ -307,35 +296,14 @@
   // ═══════════════ i18n Language Switch ═══════════════
   const i18nData = {
     en: {
-      'nav.features': 'Features', 'nav.voice': 'Voice AI', 'nav.router': 'AI Router',
-      'nav.skills': 'Skills', 'nav.wechat': 'WeChat', 'nav.ecosystem': 'Ecosystem',
-      'nav.personas': 'Use Cases', 'nav.faq': 'FAQ', 'nav.cta': 'Get Started',
+      'nav.features': 'Features', 'nav.showcase': 'Showcase', 'nav.proof': 'Testimonials',
+      'nav.quickstart': 'Quick Start', 'nav.faq': 'FAQ', 'nav.community': 'Community',
+      'nav.cta': 'Get Started',
       'features.title': 'Every Spice, a Superpower',
-      'demo.title': 'See the Crayfish in Action',
-      'voice.title': 'Wake Your AI Butler with Voice',
-      'router.title': '13+ AI Brains, 1 Gateway',
-      'skills.title': '63+ Skills, Just Say It',
-      'wechat.title': 'Your WeChat, Now with an AI Brain',
+      'showcase.title': 'Deep Dive into Each Spice',
+      'proof.title': 'Data Speaks, Users Vouch',
       'desktop.title': 'AI Controls Your Computer',
       'workflow.title': 'Drag & Drop Workflows',
-      'ecosystem.title': 'One Crayfish\'s AI Empire',
-      'comparison.title': 'Why ShiSanXiang?',
-      'testimonials.title': 'What People Say',
-      'testimonials.desc': 'Real voices from the frontline',
-      'personas.title': 'Who Uses This?',
-      'personas.desc': 'Whatever your role, there\'s a spice for you in this pot',
-      'personas.dev.name': 'Indie Developer',
-      'personas.dev.desc': 'Save tokens with AI router, automate testing & deploy with workflows — one person, one team',
-      'personas.wechat.name': 'Social Commerce',
-      'personas.wechat.desc': 'WeChat auto-reply + AI copywriting + group management + mass friending — money while you sleep',
-      'personas.team.name': 'Startup / Small Team',
-      'personas.team.desc': 'Feishu, DingTalk, WeCom all connected — knowledge base + workflow replaces half your SaaS stack',
-      'personas.voice.name': 'Voice AI Enthusiast',
-      'personas.voice.desc': 'Wake word + voice clone + emotion detect — build your personal AI assistant, 100x better than Siri',
-      'personas.home.name': 'Smart Home Player',
-      'personas.home.desc': 'HomeAssistant bridge + voice control — "Hey Crayfish, lights off" faster than any switch',
-      'personas.ops.name': 'IT Admin / DevOps',
-      'personas.ops.desc': 'Remote desktop AI + server patrol workflows + Telegram alerts — 24/7 unattended ops',
       'hero.badge': 'Open Source · Free · All-in-One',
       'hero.title': 'ShiSanXiang',
       'hero.slogan': '13 Spices, One AI Empire',
@@ -350,37 +318,20 @@
       'faq.q2': 'Is it really 100% free? Any hidden costs?',
       'faq.a2': 'The software is MIT open-source, <strong>100% free</strong>. You only pay for your own AI API keys (OpenAI, DeepSeek, etc.). Our smart router auto-selects the cheapest model — saving up to 70% on tokens.',
       'faq.q3': 'I don\'t know code. Can I still use it?',
-      'faq.a3': 'Yes! We provide a <strong>Windows one-click installer</strong> (just double-click the exe), Docker one-click deploy, and a visual drag-and-drop workflow editor. Advanced features like WeChat automation benefit from basic IT knowledge. Our Telegram group is always there to help.',
+      'faq.a3': 'Yes! We provide a <strong>Windows one-click installer</strong>, Docker one-click deploy, and a visual drag-and-drop workflow editor.',
       'faq.q4': 'Will WeChat automation get my account banned?',
-      'faq.a4': 'We have a <strong>3-layer anti-risk system</strong>: random human-like delays, smart frequency limits, and sensitive keyword blocking. Plus a "manual review" mode — AI drafts, you confirm before sending. Much safer than protocol-based tools since we use UI automation.',
-      'faq.q5': 'Which AI models are supported? Any Chinese models?',
-      'faq.a5': 'We support <strong>13+ AI providers</strong>: OpenAI, Anthropic, Google Gemini, DeepSeek, Zhipu GLM, Qwen, Baidu ERNIE, Moonshot, Yi, Groq, Mistral, Ollama local models, and more. Full Chinese model coverage, plus fully offline local models via Ollama.',
-      'faq.q6': 'Is my data safe? Will my chats be leaked?',
-      'faq.a6': '<strong>All data stays on your own server</strong>. We collect zero user data. Code is fully open-source for audit. AI API calls go directly through your own keys — no middleman proxy.',
-      'roadmap.title': 'Evolution Roadmap',
-      'roadmap.desc': 'This crayfish keeps growing',
-      'roadmap.m1.title': 'Core Engine Launch',
-      'roadmap.m1.desc': 'AI Router · Voice Engine · Skills Center · Basic WeChat Automation',
-      'roadmap.m2.title': 'Cross-Platform',
-      'roadmap.m2.desc': 'Browser PWA · Android APK · Windows Desktop · IM Bridge Matrix',
-      'roadmap.m3.title': 'WeChat Empire',
-      'roadmap.m3.desc': 'Triple-track auto-reply · Moments AI · Group management · 3-layer anti-risk',
-      'roadmap.m4.title': 'v2.0 ShiSanXiang',
-      'roadmap.m4.desc': 'Brand upgrade · Website launch · Visual workflow · Remote desktop AI · 63+ skills',
-      'roadmap.m5.title': 'Plugin Marketplace',
-      'roadmap.m5.desc': 'Community skill store · Third-party workflow templates · One-click plugin ecosystem',
-      'roadmap.m6.title': 'Multi-Agent Collaboration',
-      'roadmap.m6.desc': 'Agent-to-Agent communication · Autonomous task decomposition · Multi-crayfish ops',
+      'faq.a4': 'We have a <strong>3-layer anti-risk system</strong>: random delays, smart frequency limits, and keyword blocking. Plus a "manual review" mode.',
+      'faq.q5': 'Which AI models are supported?',
+      'faq.a5': 'We support <strong>13+ AI providers</strong>: OpenAI, Anthropic, Google, DeepSeek, Zhipu, Qwen, Baidu, Moonshot, Yi, Groq, Mistral, Ollama, and more.',
+      'faq.q6': 'Is my data safe?',
+      'faq.a6': '<strong>All data stays on your own server</strong>. We collect zero user data. Code is fully open-source for audit.',
       'community.title': 'Join the Crayfish Gang',
       'community.desc': 'Every feature comes from real user needs — let\'s build the AI future together',
-      'community.stat1': 'Issue Response',
-      'community.stat2': 'Open Source',
-      'community.stat3': 'Zero Middlemen',
     },
     zh: {
-      'nav.features': '核心能力', 'nav.voice': '语音引擎', 'nav.router': 'AI 路由',
-      'nav.skills': '技能中心', 'nav.wechat': '微信自动化', 'nav.ecosystem': '生态版图',
-      'nav.personas': '使用场景', 'nav.faq': 'FAQ', 'nav.cta': '立即体验',
+      'nav.features': '核心能力', 'nav.showcase': '功能展示', 'nav.proof': '用户口碑',
+      'nav.quickstart': '快速上手', 'nav.faq': 'FAQ', 'nav.community': '社群',
+      'nav.cta': '立即体验',
       'hero.badge': '开源 · 免费 · 全能',
       'hero.title': '十三香小龙虾',
       'hero.slogan': '一壶十三香，煮沸 AI 江湖',
@@ -397,7 +348,6 @@
     localStorage.setItem('lang', lang);
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
     if (langBtn) langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
-
     const strings = i18nData[lang];
     if (!strings) return;
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -411,9 +361,7 @@
   }
 
   if (langBtn) {
-    langBtn.addEventListener('click', () => {
-      applyLang(currentLang === 'zh' ? 'en' : 'zh');
-    });
+    langBtn.addEventListener('click', () => applyLang(currentLang === 'zh' ? 'en' : 'zh'));
   }
   if (currentLang === 'en') applyLang('en');
 
@@ -421,7 +369,7 @@
   document.querySelectorAll('.cta-copy').forEach(btn => {
     btn.addEventListener('click', () => {
       const original = btn.textContent;
-      btn.textContent = '已复制 ✓';
+      btn.textContent = 'OK';
       btn.style.color = '#07c160';
       btn.style.borderColor = '#07c160';
       setTimeout(() => {
@@ -518,12 +466,7 @@
 
       for (const step of chatScript) {
         if (!demoRunning) break;
-
-        if (step.type === 'pause') {
-          await new Promise(r => setTimeout(r, step.delay));
-          continue;
-        }
-
+        if (step.type === 'pause') { await new Promise(r => setTimeout(r, step.delay)); continue; }
         if (step.type === 'user') {
           if (step.cap) highlightCap(step.cap);
           inputText.className = 'demo-input-text typing';
@@ -532,20 +475,14 @@
           inputText.className = 'demo-input-text';
           inputText.textContent = '输入消息...';
           addMessage(`<div class="demo-msg demo-msg--user"><div class="demo-msg-bubble">${step.text}</div></div>`);
-        }
-
-        else if (step.type === 'typing') {
+        } else if (step.type === 'typing') {
           showTyping();
           await new Promise(r => setTimeout(r, step.delay));
           removeTyping();
-        }
-
-        else if (step.type === 'skill') {
+        } else if (step.type === 'skill') {
           addMessage(`<div class="demo-msg-skill">${step.icon} ${step.name}</div>`);
           await new Promise(r => setTimeout(r, 300));
-        }
-
-        else if (step.type === 'ai') {
+        } else if (step.type === 'ai') {
           const wrapper = document.createElement('div');
           wrapper.className = 'demo-msg demo-msg--ai';
           const bubble = document.createElement('div');
@@ -610,9 +547,7 @@
         msg.badge === 'reply' ? '回复' : msg.badge === 'moment' ? '朋友圈' : msg.badge === 'group' ? '群聊' : '预警'
       }</span>${msg.text}`;
       feedList.insertBefore(item, feedList.firstChild);
-      if (feedList.children.length > 6) {
-        feedList.removeChild(feedList.lastChild);
-      }
+      if (feedList.children.length > 6) feedList.removeChild(feedList.lastChild);
       feedIdx++;
     }, 4000);
   }
@@ -636,7 +571,6 @@
       const outputs = termBody.querySelectorAll('.terminal-output');
       lines.forEach(l => { const cmd = l.querySelector('.terminal-cmd'); if (cmd) cmd.textContent = ''; });
       outputs.forEach(o => o.classList.add('terminal-hidden'));
-
       for (let i = 0; i < lines.length; i++) {
         const cmd = lines[i].querySelector('.terminal-cmd');
         if (!cmd) continue;
@@ -653,7 +587,8 @@
     const termObs = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) runTerminal();
     }, { threshold: 0.4 });
-    termObs.observe(termBody.closest('.terminal'));
+    const termEl = termBody.closest('.terminal');
+    if (termEl) termObs.observe(termEl);
   }
 
   // ═══════════════ Testimonial Infinite Scroll ═══════════════
@@ -664,8 +599,6 @@
   }
 
   // ═══════════════ Micro-Interactions ═══════════════
-
-  // Ripple on buttons
   document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', function (e) {
       const circle = document.createElement('span');
@@ -680,7 +613,6 @@
     });
   });
 
-  // 3D Tilt on cards (desktop only)
   if (!isMobile) {
     document.querySelectorAll('.tilt-card').forEach(card => {
       card.addEventListener('mousemove', function (e) {
@@ -693,13 +625,10 @@
         const rotateY = ((x - cx) / cx) * 6;
         this.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
       });
-      card.addEventListener('mouseleave', function () {
-        this.style.transform = '';
-      });
+      card.addEventListener('mouseleave', function () { this.style.transform = ''; });
     });
   }
 
-  // Magnetic buttons (desktop only)
   if (!isMobile) {
     document.querySelectorAll('.btn--magnetic').forEach(btn => {
       btn.addEventListener('mousemove', function (e) {
@@ -708,9 +637,7 @@
         const y = e.clientY - rect.top - rect.height / 2;
         this.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
       });
-      btn.addEventListener('mouseleave', function () {
-        this.style.transform = '';
-      });
+      btn.addEventListener('mouseleave', function () { this.style.transform = ''; });
     });
   }
 
