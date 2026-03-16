@@ -320,6 +320,8 @@
       'workflow.title': 'Drag & Drop Workflows',
       'ecosystem.title': 'One Crayfish\'s AI Empire',
       'comparison.title': 'Why ShiSanXiang?',
+      'testimonials.title': 'What People Say',
+      'testimonials.desc': 'Real voices from the frontline',
       'personas.title': 'Who Uses This?',
       'personas.desc': 'Whatever your role, there\'s a spice for you in this pot',
       'personas.dev.name': 'Indie Developer',
@@ -652,6 +654,13 @@
       if (entries[0].isIntersecting) runTerminal();
     }, { threshold: 0.4 });
     termObs.observe(termBody.closest('.terminal'));
+  }
+
+  // ═══════════════ Testimonial Infinite Scroll ═══════════════
+  const testimonialScroll = document.querySelector('.testimonial-scroll');
+  if (testimonialScroll) {
+    const cards = testimonialScroll.innerHTML;
+    testimonialScroll.innerHTML = cards + cards;
   }
 
   // ═══════════════ Micro-Interactions ═══════════════
