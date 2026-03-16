@@ -1,0 +1,20 @@
+{
+  "name": "十三香小龙虾 — AI 全能助手平台",
+  "short_name": "十三香小龙虾",
+  "description": "全栈式 AI 智能助手平台。13+ 大模型、63+ 技能、微信自动化、远程桌面、工作流引擎。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#ff3333",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "lang": "zh-CN"
+}

@@ -149,6 +149,7 @@ img { max-width: 100%; display: block; }
   gap: 8px;
 }
 .nav-link {
+  position: relative;
   padding: 6px 14px;
   border-radius: 8px;
   font-size: 14px;
@@ -1997,6 +1998,69 @@ th.comparison-us {
   .qs-chip { font-size: 11px; padding: 5px 12px; }
   .community-card { padding: 28px 20px; }
   .community-stat-num { font-size: 22px; }
+}
+
+/* ─── Button Ripple Effect ─── */
+.btn { position: relative; overflow: hidden; }
+.btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: rippleAnim 0.6s ease-out;
+  pointer-events: none;
+}
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ─── Card 3D Tilt ─── */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+.tilt-card > * {
+  transform: translateZ(0);
+}
+
+/* ─── Magnetic Button ─── */
+.btn--magnetic {
+  transition: transform 0.2s ease-out;
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-gold), var(--c-primary));
+  background-size: 200% 100%;
+  animation: progressShimmer 3s linear infinite;
+  z-index: 1001;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+@keyframes progressShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── Active Nav Link Indicator ─── */
+.nav-link.active {
+  color: var(--c-gold);
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--c-gold);
+  border-radius: 2px;
 }
 
 /* ─── Accessibility: Skip Link ─── */

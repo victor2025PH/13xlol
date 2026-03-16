@@ -33,6 +33,9 @@
     });
   }
 
+  // ═══════════════ Global Flags ═══════════════
+  const isMobile = window.innerWidth < 768;
+
   // ═══════════════ Particle System ═══════════════
   const canvas = document.getElementById('heroCanvas');
   if (canvas) {
@@ -90,7 +93,6 @@
       }
     }
 
-    const isMobile = window.innerWidth < 768;
     function initParticles() {
       resize();
       const maxP = isMobile ? 40 : 200;
@@ -202,8 +204,16 @@
   const sections = document.querySelectorAll('.section, .hero');
   const navLinkEls = document.querySelectorAll('.nav-link:not(.nav-link--cta)');
 
+  const scrollProgressBar = document.getElementById('scrollProgress');
+
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
+
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollProgressBar && docHeight > 0) {
+      scrollProgressBar.style.width = ((scrollTop / docHeight) * 100) + '%';
+    }
 
     let current = '';
     sections.forEach(section => {
@@ -215,7 +225,7 @@
     navLinkEls.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
     });
-  });
+  }, { passive: true });
 
   if (navToggle) {
     navToggle.addEventListener('click', () => {
@@ -300,6 +310,16 @@
       'nav.features': 'Features', 'nav.voice': 'Voice AI', 'nav.router': 'AI Router',
       'nav.skills': 'Skills', 'nav.wechat': 'WeChat', 'nav.ecosystem': 'Ecosystem',
       'nav.personas': 'Use Cases', 'nav.faq': 'FAQ', 'nav.cta': 'Get Started',
+      'features.title': 'Every Spice, a Superpower',
+      'demo.title': 'See the Crayfish in Action',
+      'voice.title': 'Wake Your AI Butler with Voice',
+      'router.title': '13+ AI Brains, 1 Gateway',
+      'skills.title': '63+ Skills, Just Say It',
+      'wechat.title': 'Your WeChat, Now with an AI Brain',
+      'desktop.title': 'AI Controls Your Computer',
+      'workflow.title': 'Drag & Drop Workflows',
+      'ecosystem.title': 'One Crayfish\'s AI Empire',
+      'comparison.title': 'Why ShiSanXiang?',
       'personas.title': 'Who Uses This?',
       'personas.desc': 'Whatever your role, there\'s a spice for you in this pot',
       'personas.dev.name': 'Indie Developer',
@@ -632,6 +652,57 @@
       if (entries[0].isIntersecting) runTerminal();
     }, { threshold: 0.4 });
     termObs.observe(termBody.closest('.terminal'));
+  }
+
+  // ═══════════════ Micro-Interactions ═══════════════
+
+  // Ripple on buttons
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      const circle = document.createElement('span');
+      circle.classList.add('ripple');
+      const d = Math.max(this.clientWidth, this.clientHeight);
+      circle.style.width = circle.style.height = d + 'px';
+      const rect = this.getBoundingClientRect();
+      circle.style.left = (e.clientX - rect.left - d / 2) + 'px';
+      circle.style.top = (e.clientY - rect.top - d / 2) + 'px';
+      this.appendChild(circle);
+      setTimeout(() => circle.remove(), 600);
+    });
+  });
+
+  // 3D Tilt on cards (desktop only)
+  if (!isMobile) {
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', function (e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const rotateX = ((y - cy) / cy) * -6;
+        const rotateY = ((x - cx) / cx) * 6;
+        this.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      });
+      card.addEventListener('mouseleave', function () {
+        this.style.transform = '';
+      });
+    });
+  }
+
+  // Magnetic buttons (desktop only)
+  if (!isMobile) {
+    document.querySelectorAll('.btn--magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', function (e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        this.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+      });
+      btn.addEventListener('mouseleave', function () {
+        this.style.transform = '';
+      });
+    });
   }
 
 })();

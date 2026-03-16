@@ -48,6 +48,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="logo.svg">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="logo.svg">
   <style>
     .loader{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:#080808;transition:opacity .5s}
     .loader.hidden{opacity:0;pointer-events:none}
@@ -95,6 +97,8 @@
       </button>
     </div>
   </nav>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <main>
   <!-- ═══════════════ 英雄区 ═══════════════ -->
@@ -148,41 +152,41 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">CORE CAPABILITIES</span>
-        <h2 class="section-title">每一味香料，都是一个超能力</h2>
+        <h2 class="section-title" data-i18n="features.title">每一味香料，都是一个超能力</h2>
         <p class="section-subtitle">六大核心引擎，构建你的 AI 全能管家</p>
       </div>
       <div class="feature-grid">
-        <div class="feature-card reveal" data-delay="0">
+        <div class="feature-card tilt-card reveal" data-delay="0">
           <div class="feature-card-icon">🎙️</div>
           <div class="feature-card-glow"></div>
           <h3>语音 AI 引擎</h3>
           <p>6 大 STT + 5 大 TTS + 声音克隆 + 情绪感知 + 端到端语音直连</p>
         </div>
-        <div class="feature-card reveal" data-delay="1">
+        <div class="feature-card tilt-card reveal" data-delay="1">
           <div class="feature-card-icon">🧠</div>
           <div class="feature-card-glow"></div>
           <h3>智能路由</h3>
           <p>13+ AI 大模型自动切换，省钱/质量/速度三模式，自动容灾</p>
         </div>
-        <div class="feature-card reveal" data-delay="2">
+        <div class="feature-card tilt-card reveal" data-delay="2">
           <div class="feature-card-icon">💬</div>
           <div class="feature-card-glow"></div>
           <h3>微信自动化</h3>
           <p>AI 自动回复 · 朋友圈管理 · 群发系统 · 多账号管理 · 数据大屏</p>
         </div>
-        <div class="feature-card reveal" data-delay="3">
+        <div class="feature-card tilt-card reveal" data-delay="3">
           <div class="feature-card-icon">🖥️</div>
           <div class="feature-card-glow"></div>
           <h3>远程桌面</h3>
           <p>AI 驱动桌面自动化，截图 → OCR → 规划 → 执行，手机远程操控</p>
         </div>
-        <div class="feature-card reveal" data-delay="4">
+        <div class="feature-card tilt-card reveal" data-delay="4">
           <div class="feature-card-icon">⚡</div>
           <div class="feature-card-glow"></div>
           <h3>工作流引擎</h3>
           <p>可视化 DAG 编辑器，17 种节点类型，定时/事件/手动触发</p>
         </div>
-        <div class="feature-card reveal" data-delay="5">
+        <div class="feature-card tilt-card reveal" data-delay="5">
           <div class="feature-card-icon">🌐</div>
           <div class="feature-card-glow"></div>
           <h3>全平台覆盖</h3>
@@ -197,7 +201,7 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">LIVE DEMO</span>
-        <h2 class="section-title">看看小龙虾的日常</h2>
+        <h2 class="section-title" data-i18n="demo.title">看看小龙虾的日常</h2>
         <p class="section-subtitle">一段真实对话，展示 AI 全能管家的实力</p>
       </div>
       <div class="demo-layout reveal">
@@ -260,7 +264,7 @@
       <div class="split-layout">
         <div class="split-left reveal">
           <span class="section-tag">VOICE AI ENGINE</span>
-          <h2 class="section-title">用声音，唤醒你的 AI 管家</h2>
+          <h2 class="section-title" data-i18n="voice.title">用声音，唤醒你的 AI 管家</h2>
           <p class="section-subtitle">说一句"你好小龙"，AI 随时待命</p>
           <div class="voice-features">
             <div class="voice-feature">
@@ -334,7 +338,7 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">SMART AI ROUTER</span>
-        <h2 class="section-title">13+ AI 大脑，1 个入口</h2>
+        <h2 class="section-title" data-i18n="router.title">13+ AI 大脑，1 个入口</h2>
         <p class="section-subtitle">智能路由自动选择最优模型，故障秒级切换</p>
       </div>
       <div class="router-modes reveal">
@@ -420,7 +424,7 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">SKILL CENTER</span>
-        <h2 class="section-title">63+ 超能技能，即说即用</h2>
+        <h2 class="section-title" data-i18n="skills.title">63+ 超能技能，即说即用</h2>
         <p class="section-subtitle">10 大分类覆盖生活工作方方面面，部分技能离线可用</p>
       </div>
       <div class="skill-categories reveal">
@@ -516,7 +520,7 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">WECHAT AUTOMATION</span>
-        <h2 class="section-title">你的微信，从此有了 AI 大脑</h2>
+        <h2 class="section-title" data-i18n="wechat.title">你的微信，从此有了 AI 大脑</h2>
         <p class="section-subtitle">业界最强微信自动化系统，一个人顶一个团队</p>
       </div>
       <div class="wechat-grid">
@@ -659,7 +663,7 @@
       <div class="desktop-split">
         <div class="desktop-panel reveal">
           <span class="section-tag">REMOTE DESKTOP</span>
-          <h2 class="section-title">AI 替你操控电脑</h2>
+          <h2 class="section-title" data-i18n="desktop.title">AI 替你操控电脑</h2>
           <p>说出需求，AI 自动截图分析 → OCR 识别界面 → 规划操作步骤 → 精准执行</p>
           <div class="desktop-demo">
             <div class="desktop-screen">
@@ -686,7 +690,7 @@
         </div>
         <div class="desktop-panel reveal">
           <span class="section-tag">WORKFLOW ENGINE</span>
-          <h2 class="section-title">拖拽式工作流</h2>
+          <h2 class="section-title" data-i18n="workflow.title">拖拽式工作流</h2>
           <p>17 种节点类型，可视化 DAG 编辑，让 AI 按你设计的流程自动执行</p>
           <div class="workflow-demo">
             <div class="workflow-node workflow-node--trigger">⏰ 定时触发</div>
@@ -722,7 +726,7 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">ECOSYSTEM</span>
-        <h2 class="section-title">一只龙虾的 AI 帝国</h2>
+        <h2 class="section-title" data-i18n="ecosystem.title">一只龙虾的 AI 帝国</h2>
         <p class="section-subtitle">全平台覆盖 × 全通道桥接，无处不在</p>
       </div>
 
@@ -899,7 +903,7 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag">WHY US</span>
-        <h2 class="section-title">为什么选择十三香小龙虾？</h2>
+        <h2 class="section-title" data-i18n="comparison.title">为什么选择十三香小龙虾？</h2>
       </div>
       <div class="comparison-table-wrap reveal">
         <table class="comparison-table">
@@ -1179,7 +1183,7 @@
         <h2 class="cta-title">准备好煮沸你的 AI 江湖了吗？</h2>
         <p class="cta-desc">开源免费，5 分钟部署，即刻拥有你的 AI 全能管家</p>
         <div class="cta-buttons">
-          <a href="https://github.com/victor2025PH/13xlol" target="_blank" class="btn btn--primary btn--large">
+          <a href="https://github.com/victor2025PH/13xlol" target="_blank" class="btn btn--primary btn--large btn--magnetic">
             <span class="btn-glow"></span>
             ⭐ GitHub Star
           </a>
@@ -1241,6 +1245,7 @@
   <button class="back-to-top" id="backToTop" aria-label="返回顶部">↑</button>
 
   <script src="js/main.js" defer></script>
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script>
   <script>
   (function(){
     var bp = document.createElement('script');
