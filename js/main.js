@@ -129,6 +129,62 @@
     animate();
   }
 
+  // ═══════════════ Hero Pain Point Flip ═══════════════
+  const heroPain = document.getElementById('heroPain');
+  const heroSolution = document.getElementById('heroSolution');
+  if (heroPain && heroSolution) {
+    const painNums = heroPain.querySelectorAll('[data-pain]');
+    painNums.forEach(el => {
+      const target = parseInt(el.dataset.pain, 10);
+      const duration = 1500;
+      const start = performance.now();
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(target * eased);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      setTimeout(() => requestAnimationFrame(step), 400);
+    });
+
+    setTimeout(() => {
+      heroPain.classList.remove('active');
+      heroPain.classList.add('fade-out');
+      setTimeout(() => {
+        heroSolution.classList.add('active');
+        heroSolution.querySelectorAll('.reveal').forEach((el, i) => {
+          setTimeout(() => el.classList.add('revealed'), i * 150);
+        });
+      }, 400);
+    }, 4500);
+  }
+
+  // ═══════════════ ROI Calculator ═══════════════
+  const roiTeamSize = document.getElementById('roiTeamSize');
+  const roiCloudCost = document.getElementById('roiCloudCost');
+  if (roiTeamSize && roiCloudCost) {
+    function updateROI() {
+      const team = parseInt(roiTeamSize.value, 10);
+      const cloud = parseInt(roiCloudCost.value, 10);
+      const rate = 7.2;
+      const oldCost = Math.round(team * cloud * 12 * rate);
+      const selfHostedPerUser = 10;
+      const newCost = Math.round(team * selfHostedPerUser * 12 * rate);
+      const save = oldCost - newCost;
+      const pct = Math.round((save / oldCost) * 100);
+      const fmt = n => '¥' + n.toLocaleString();
+      document.getElementById('roiOldCost').textContent = fmt(oldCost);
+      document.getElementById('roiNewCost').textContent = fmt(newCost);
+      document.getElementById('roiSave').textContent = fmt(save);
+      document.getElementById('roiPct').textContent = '↓ ' + pct + '%';
+    }
+    roiTeamSize.addEventListener('change', updateROI);
+    roiCloudCost.addEventListener('change', updateROI);
+    updateROI();
+  }
+
   // ═══════════════ Scroll Reveal ═══════════════
   const revealElements = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
@@ -296,7 +352,7 @@
   // ═══════════════ i18n Language Switch ═══════════════
   const i18nData = {
     en: {
-      'nav.features': 'Features', 'nav.showcase': 'Showcase', 'nav.proof': 'Testimonials',
+      'nav.features': 'Features',
       'nav.quickstart': 'Quick Start', 'nav.faq': 'FAQ', 'nav.community': 'Community',
       'nav.cta': 'Get Started',
       'features.title': 'Every Spice, a Superpower',
@@ -329,7 +385,7 @@
       'community.desc': 'Every feature comes from real user needs — let\'s build the AI future together',
     },
     zh: {
-      'nav.features': '核心能力', 'nav.showcase': '功能展示', 'nav.proof': '用户口碑',
+      'nav.features': '核心能力',
       'nav.quickstart': '快速上手', 'nav.faq': 'FAQ', 'nav.community': '社群',
       'nav.cta': '立即体验',
       'hero.badge': '开源 · 免费 · 全能',

@@ -43,10 +43,10 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="css/style.css?v=11" as="style">
-  <link rel="preload" href="js/main.js?v=11" as="script">
+  <link rel="preload" href="css/style.css?v=12" as="style">
+  <link rel="preload" href="js/main.js?v=12" as="script">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=11">
+  <link rel="stylesheet" href="css/style.css?v=12">
   <link rel="icon" href="logo.svg">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="logo.svg">
@@ -80,9 +80,9 @@
         <span class="nav-name">十三香小龙虾</span>
       </a>
       <div class="nav-links" id="navLinks">
+        <a href="#doors" class="nav-link">应用场景</a>
         <a href="#features" class="nav-link" data-i18n="nav.features">核心能力</a>
-        <a href="#showcase" class="nav-link" data-i18n="nav.showcase">功能展示</a>
-        <a href="#proof" class="nav-link" data-i18n="nav.proof">用户口碑</a>
+        <a href="#why-us" class="nav-link">为什么选我们</a>
         <a href="#quickstart" class="nav-link" data-i18n="nav.quickstart">快速上手</a>
         <a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a>
         <a href="#contact" class="nav-link" data-i18n="nav.community">社群</a>
@@ -99,53 +99,389 @@
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <main>
-  <!-- ═══════════════ 1. 英雄区 ═══════════════ -->
+  <!-- ═══════════════ 1. 英雄区 — 痛点翻转 ═══════════════ -->
   <section class="hero" id="hero" role="banner">
     <canvas class="hero-canvas" id="heroCanvas"></canvas>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-badge reveal" data-i18n="hero.badge">开源 · 免费 · 全能</div>
-      <h1 class="hero-title reveal">
-        <span class="hero-title-cn" data-i18n="hero.title">十三香小龙虾</span>
-      </h1>
-      <p class="hero-slogan reveal" data-i18n="hero.slogan">一壶十三香，煮沸 AI 江湖</p>
-      <p class="hero-desc reveal" data-i18n-html="hero.desc">
-        全栈式 AI 智能助手平台 — 13+ 大模型智能路由 · 63+ 内置超能技能 · 微信自动化帝国<br>
-        远程桌面控制 · 可视化工作流 · 全平台覆盖
-      </p>
-      <div class="hero-cta reveal">
-        <a href="#cta" class="btn btn--primary">
-          <span class="btn-glow"></span>
-          <span data-i18n="hero.cta1">🚀 开始使用</span>
-        </a>
-        <a href="#features" class="btn btn--outline" data-i18n="hero.cta2">了解更多 ↓</a>
+      <!-- Phase A: 痛点数据轰炸 -->
+      <div class="hero-phase hero-pain active" id="heroPain">
+        <div class="pain-stats">
+          <div class="pain-stat reveal" data-delay="0">
+            <span class="pain-num" data-pain="75">0</span><span class="pain-pct">%</span>
+            <span class="pain-label">的消费者对 AI 客服感到沮丧</span>
+            <span class="pain-source">— Glance CX 2026</span>
+          </div>
+          <div class="pain-stat reveal" data-delay="1">
+            <span class="pain-num" data-pain="9">0</span><span class="pain-pct">%</span>
+            <span class="pain-label">的问题被聊天机器人真正解决</span>
+            <span class="pain-source">— GreetNow Research</span>
+          </div>
+          <div class="pain-stat reveal" data-delay="2">
+            <span class="pain-num" data-pain="95">0</span><span class="pain-pct">%</span>
+            <span class="pain-label">的企业 AI 投入无法产出 ROI</span>
+            <span class="pain-source">— KPMG AI Pulse 2026</span>
+          </div>
+        </div>
+        <p class="pain-question reveal" data-delay="3">你，还要忍多久？</p>
       </div>
-      <div class="hero-stats reveal">
-        <div class="hero-stat">
-          <span class="hero-stat-num" data-target="13">0</span><span class="hero-stat-plus">+</span>
-          <span class="hero-stat-label">AI 提供商</span>
+      <!-- Phase B: 龙虾解决方案 -->
+      <div class="hero-phase hero-solution" id="heroSolution">
+        <div class="hero-badge reveal" data-i18n="hero.badge">开源 · 免费 · 全场景覆盖</div>
+        <h1 class="hero-title reveal">
+          <span class="hero-title-cn" data-i18n="hero.title">十三香小龙虾</span>
+        </h1>
+        <p class="hero-slogan reveal">从家到工厂，一只龙虾搞定一切</p>
+        <p class="hero-desc reveal">
+          不是另一个聊天框 — 是你的 <strong>AI 全能管家</strong><br>
+          家庭看护 · 智能办公 · 企业自动化 · 13+ 大模型 · 63+ 技能 · 完全开源
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#home-scenes" class="btn btn--primary"><span class="btn-glow"></span>🏠 家庭场景</a>
+          <a href="#work-scenes" class="btn btn--outline">💼 智能办公</a>
+          <a href="#enterprise-scenes" class="btn btn--outline btn--enterprise">🏭 企业方案</a>
         </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num" data-target="63">0</span><span class="hero-stat-plus">+</span>
-          <span class="hero-stat-label">内置技能</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num" data-target="150">0</span><span class="hero-stat-plus">+</span>
-          <span class="hero-stat-label">API 接口</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num" data-target="9">0</span><span class="hero-stat-plus">+</span>
-          <span class="hero-stat-label">IM 桥接</span>
+        <div class="hero-stats reveal">
+          <div class="hero-stat"><span class="hero-stat-num" data-target="13">0</span><span class="hero-stat-plus">+</span><span class="hero-stat-label">AI 提供商</span></div>
+          <div class="hero-stat"><span class="hero-stat-num" data-target="63">0</span><span class="hero-stat-plus">+</span><span class="hero-stat-label">内置技能</span></div>
+          <div class="hero-stat"><span class="hero-stat-num" data-target="150">0</span><span class="hero-stat-plus">+</span><span class="hero-stat-label">API 接口</span></div>
+          <div class="hero-stat"><span class="hero-stat-num" data-target="9">0</span><span class="hero-stat-plus">+</span><span class="hero-stat-label">IM 桥接</span></div>
         </div>
       </div>
     </div>
-    <div class="hero-scroll">
-      <span>向下探索</span>
-      <div class="hero-scroll-arrow"></div>
+    <div class="hero-scroll"><span>向下探索</span><div class="hero-scroll-arrow"></div></div>
+  </section>
+
+  <!-- ═══════════════ 2. 三扇门 — 选择你的场景 ═══════════════ -->
+  <section class="section section--accent doors" id="doors">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">CHOOSE YOUR SCENARIO</span>
+        <h2 class="section-title">选择你的场景</h2>
+        <p class="section-subtitle">每个人都能在这里找到属于自己的 AI 管家</p>
+      </div>
+      <div class="doors-grid">
+        <a href="#home-scenes" class="door-card reveal" data-delay="0">
+          <div class="door-front">
+            <div class="door-icon">🏠</div>
+            <h3 class="door-title">家庭场景</h3>
+            <p class="door-pain">"妈，AI 说的我听不懂..."</p>
+            <div class="door-pain-data"><span class="door-pain-num">75%</span> 用户对 AI 客服感到沮丧</div>
+          </div>
+          <div class="door-back">
+            <div class="door-icon">🏠</div>
+            <h3 class="door-title">AI 全能家庭管家</h3>
+            <p>中文语音 · 视觉监控 · 婴儿看护 · 老人照护 · 学生教育 · 全屋智控</p>
+            <span class="door-action">探索 8 大场景 →</span>
+          </div>
+        </a>
+        <a href="#work-scenes" class="door-card reveal" data-delay="1">
+          <div class="door-front">
+            <div class="door-icon">💼</div>
+            <h3 class="door-title">智能办公</h3>
+            <p class="door-pain">"又在手动复制粘贴发朋友圈？"</p>
+            <div class="door-pain-data">AI 只完成 <span class="door-pain-num">20%</span> 的工作</div>
+          </div>
+          <div class="door-back">
+            <div class="door-icon">💼</div>
+            <h3 class="door-title">语音指令全自动化</h3>
+            <p>微信自动化 · 远程桌面 · 内容创作 · 数据分析 · IM 统一管理</p>
+            <span class="door-action">探索 7 大场景 →</span>
+          </div>
+        </a>
+        <a href="#enterprise-scenes" class="door-card reveal" data-delay="2">
+          <div class="door-front">
+            <div class="door-icon">🏭</div>
+            <h3 class="door-title">企业方案</h3>
+            <p class="door-pain">"AI 投入百万，ROI 在哪？"</p>
+            <div class="door-pain-data"><span class="door-pain-num">95%</span> 企业 AI 部署无法产出 ROI</div>
+          </div>
+          <div class="door-back">
+            <div class="door-icon">🏭</div>
+            <h3 class="door-title">开箱即用 AI 中台</h3>
+            <p>Docker 一键部署 · 视觉质检 · 流程自动化 · 行业验证 450% ROI</p>
+            <span class="door-action">探索 8 大场景 →</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- ═══════════════ 2. 核心能力总览 ═══════════════ -->
+  <!-- ═══════════════ 3A. 家庭场景展示区 ═══════════════ -->
+  <section class="section section--standard scene-section" id="home-scenes">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">HOME &amp; FAMILY</span>
+        <h2 class="section-title">🏠 家庭场景 — AI 守护你的家</h2>
+        <p class="section-subtitle">从清晨到深夜，每个场景都有龙虾陪伴</p>
+      </div>
+      <!-- 时间线叙事：新手妈妈的一天 -->
+      <div class="scene-timeline reveal">
+        <h3 class="timeline-story-title">👶 新手妈妈的一天（有龙虾 vs 没龙虾）</h3>
+        <div class="timeline-story">
+          <div class="tl-row"><span class="tl-time">06:00</span><div class="tl-before">😫 婴儿又哭了，不知什么原因</div><div class="tl-after">🦞 AI 已分析哭声：饿了，建议喂奶</div></div>
+          <div class="tl-row"><span class="tl-time">08:00</span><div class="tl-before">😫 不敢洗澡，怕宝宝出事</div><div class="tl-after">🦞 视觉监控中，异常立即语音通知</div></div>
+          <div class="tl-row"><span class="tl-time">14:00</span><div class="tl-before">😫 不知道发育正不正常</div><div class="tl-after">🦞 语音问答：发育对照表 + 个性建议</div></div>
+          <div class="tl-row"><span class="tl-time">22:00</span><div class="tl-before">😫 失眠焦虑，竖耳听声</div><div class="tl-after">🦞 全自动夜间监护，安心入睡</div></div>
+        </div>
+        <div class="tl-result">使用前平均睡 <strong>4.2h</strong> → 使用后 <strong>6.8h</strong> <span class="tl-up">↑ 62%</span></div>
+      </div>
+      <!-- 8 大场景网格 -->
+      <div class="scene-grid scene-grid--home reveal">
+        <div class="scene-card">
+          <div class="scene-card-icon">👶</div>
+          <h4>婴儿看护</h4>
+          <p class="scene-card-pain">新手父母平均每晚醒 3-5 次</p>
+          <p class="scene-card-fix">AI 哭声分析 + 视觉监控 + 自动安抚音乐</p>
+          <span class="scene-card-emotion">"让你安心多睡 2 小时"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">👴</div>
+          <h4>老人照护</h4>
+          <p class="scene-card-pain">跌倒检测市场 $25 亿，但设备昂贵且复杂</p>
+          <p class="scene-card-fix">免费开源 + "你好小龙" 语音呼叫 + AI 跌倒预判</p>
+          <span class="scene-card-emotion">"让独居不再等于危险"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">📚</div>
+          <h4>学生教育</h4>
+          <p class="scene-card-pain">43% 的 AI 对话让用户重复自己</p>
+          <p class="scene-card-fix">记忆持久化 + 个性化辅导 + 语音互动</p>
+          <span class="scene-card-emotion">"比辅导班老师更懂你孩子"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🏡</div>
+          <h4>智能家居</h4>
+          <p class="scene-card-pain">AI 助手活在孤岛，跨设备上下文丢失</p>
+          <p class="scene-card-fix">HomeAssistant 桥接 + 语音/手势统一控制</p>
+          <span class="scene-card-emotion">"一句话，全屋听话"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🐾</div>
+          <h4>宠物看护</h4>
+          <p class="scene-card-pain">独居养宠人群激增，出门焦虑</p>
+          <p class="scene-card-fix">AI 视觉监控 + 异常行为检测 + 自动投喂联动</p>
+          <span class="scene-card-emotion">"出差也能陪毛孩子"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">💊</div>
+          <h4>健康管理</h4>
+          <p class="scene-card-pain">慢性病患者用药提醒遗漏率高</p>
+          <p class="scene-card-fix">语音定时提醒 + AI 问答 + 家庭医疗知识库</p>
+          <span class="scene-card-emotion">"你的私人健康秘书"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🔒</div>
+          <h4>家庭安防</h4>
+          <p class="scene-card-pain">传统安防只录像不分析</p>
+          <p class="scene-card-fix">AI 异常入侵检测 + 即时推送 + 语音警告</p>
+          <span class="scene-card-emotion">"不只是看见，更能判断"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🛒</div>
+          <h4>生活助手</h4>
+          <p class="scene-card-pain">做饭买菜记账耗时间</p>
+          <p class="scene-card-fix">语音记账 + 菜谱推荐 + 购物清单自动生成</p>
+          <span class="scene-card-emotion">"柴米油盐，AI 帮你算"</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 3B. 办公场景展示区 ═══════════════ -->
+  <section class="section section--standard scene-section" id="work-scenes">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">SMART OFFICE</span>
+        <h2 class="section-title">💼 智能办公 — 说一句，全搞定</h2>
+        <p class="section-subtitle">AI 帮你完成 95% 的工作，不是 20%</p>
+      </div>
+      <!-- Before/After 效率对比 -->
+      <div class="efficiency-dashboard reveal">
+        <div class="eff-row"><div class="eff-label">微信客服响应</div><div class="eff-bars"><div class="eff-bar eff-bar--before" style="--w:85%"><span>24 小时</span></div><div class="eff-bar eff-bar--after" style="--w:8%"><span>30 秒</span></div></div><div class="eff-boost">↑ 2880x</div></div>
+        <div class="eff-row"><div class="eff-label">内容创作</div><div class="eff-bars"><div class="eff-bar eff-bar--before" style="--w:70%"><span>3 小时</span></div><div class="eff-bar eff-bar--after" style="--w:12%"><span>20 分钟</span></div></div><div class="eff-boost">↑ 9x</div></div>
+        <div class="eff-row"><div class="eff-label">报表制作</div><div class="eff-bars"><div class="eff-bar eff-bar--before" style="--w:60%"><span>2 小时</span></div><div class="eff-bar eff-bar--after" style="--w:6%"><span>5 分钟</span></div></div><div class="eff-boost">↑ 24x</div></div>
+        <div class="eff-row"><div class="eff-label">会议纪要整理</div><div class="eff-bars"><div class="eff-bar eff-bar--before" style="--w:50%"><span>45 分钟</span></div><div class="eff-bar eff-bar--after" style="--w:3%"><span>实时</span></div></div><div class="eff-boost">↑ 自动</div></div>
+      </div>
+      <!-- 7 大场景网格 -->
+      <div class="scene-grid scene-grid--work reveal">
+        <div class="scene-card">
+          <div class="scene-card-icon">🎤</div>
+          <h4>语音办公</h4>
+          <p class="scene-card-pain">AI 只完成 20% 的工作</p>
+          <p class="scene-card-fix">语音 → 写邮件 → 发送 → 记 CRM → 设提醒，全链路执行</p>
+          <span class="scene-card-emotion">任务完成率 20% → 95%</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">💬</div>
+          <h4>微信自动化</h4>
+          <p class="scene-card-pain">腾讯 WorkBuddy 已验证赛道</p>
+          <p class="scene-card-fix">AI 自动回复 + 朋友圈 + 群发 + 风控 + 多账号</p>
+          <span class="scene-card-emotion">客服响应 24h → 30s</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🖥️</div>
+          <h4>远程桌面</h4>
+          <p class="scene-card-pain">75% 用户被 AI 客服逼疯——因为无法真正操作</p>
+          <p class="scene-card-fix">AI 直接操控电脑：截图 → OCR → 规划 → 执行</p>
+          <span class="scene-card-emotion">"说一句，操作完成"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">✍️</div>
+          <h4>内容创作</h4>
+          <p class="scene-card-pain">自媒体人内容生产压力大</p>
+          <p class="scene-card-fix">语音口述 → AI 润色 → 一键发布多平台</p>
+          <span class="scene-card-emotion">单篇创作 3h → 20min</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">📊</div>
+          <h4>数据分析</h4>
+          <p class="scene-card-pain">Excel 手工整理报表耗时</p>
+          <p class="scene-card-fix">语音描述需求 → AI 生成图表 + 报告</p>
+          <span class="scene-card-emotion">报表制作 2h → 5min</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">📝</div>
+          <h4>会议助手</h4>
+          <p class="scene-card-pain">开会记笔记跟不上，会后整理痛苦</p>
+          <p class="scene-card-fix">实时语音转文字 + 智能摘要 + 待办提取</p>
+          <span class="scene-card-emotion">会后整理 45min → 0</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🔗</div>
+          <h4>IM 统一管理</h4>
+          <p class="scene-card-pain">跨平台上下文丢失是最大痛点</p>
+          <p class="scene-card-fix">飞书 + 钉钉 + 企微 + Telegram = 统一 AI 入口</p>
+          <span class="scene-card-emotion">消息遗漏率 ↓ 90%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 3C. 企业场景展示区 ═══════════════ -->
+  <section class="section section--accent scene-section" id="enterprise-scenes">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">ENTERPRISE SOLUTIONS</span>
+        <h2 class="section-title">🏭 企业方案 — 用数据说话</h2>
+        <p class="section-subtitle">不是 PPT 里的 AI，是有 ROI 的 AI</p>
+      </div>
+      <!-- ROI 计算器 -->
+      <div class="roi-calculator reveal">
+        <h3 class="roi-title">💰 你的企业能省多少？</h3>
+        <div class="roi-inputs">
+          <div class="roi-field"><label>团队人数</label><select id="roiTeamSize"><option value="5">5 人</option><option value="10" selected>10 人</option><option value="30">30 人</option><option value="50">50 人</option><option value="100">100 人</option></select></div>
+          <div class="roi-field"><label>当前用云 AI</label><select id="roiCloudCost"><option value="20">$20/人/月</option><option value="50" selected>$50/人/月</option><option value="100">$100/人/月</option><option value="200">$200/人/月</option></select></div>
+        </div>
+        <div class="roi-result">
+          <div class="roi-item"><div class="roi-item-label">当前年支出</div><div class="roi-item-num roi-item-num--old" id="roiOldCost">¥42,000</div></div>
+          <div class="roi-item"><div class="roi-item-label">龙虾年成本</div><div class="roi-item-num roi-item-num--new" id="roiNewCost">¥8,400</div></div>
+          <div class="roi-item roi-item--save"><div class="roi-item-label">年节省</div><div class="roi-item-num roi-item-num--save" id="roiSave">¥33,600</div><div class="roi-item-pct" id="roiPct">↓ 80%</div></div>
+        </div>
+      </div>
+      <!-- 行业 ROI 证据 -->
+      <div class="roi-evidence reveal">
+        <div class="roi-evidence-card"><span class="roi-ev-num">450%</span><span class="roi-ev-label">ROI / 5 个月</span><span class="roi-ev-source">TensorBlue 制造业案例</span></div>
+        <div class="roi-evidence-card"><span class="roi-ev-num">94%</span><span class="roi-ev-label">HR 任务自动化</span><span class="roi-ev-source">IBM AI Agent 报告</span></div>
+        <div class="roi-evidence-card"><span class="roi-ev-num">60%</span><span class="roi-ev-label">管理工作削减</span><span class="roi-ev-source">荷兰电商实测</span></div>
+        <div class="roi-evidence-card"><span class="roi-ev-num">90%</span><span class="roi-ev-label">模型调用成本降低</span><span class="roi-ev-source">AT&amp;T 8B tokens/天</span></div>
+      </div>
+      <!-- 8 大场景网格 -->
+      <div class="scene-grid scene-grid--enterprise reveal">
+        <div class="scene-card">
+          <div class="scene-card-icon">👁️</div>
+          <h4>视觉质检</h4>
+          <p class="scene-card-pain">人工检测率仅 78%，疲劳影响大</p>
+          <p class="scene-card-fix">AI 视觉 → 缺陷检出 99.2% → 实时反馈</p>
+          <span class="scene-card-emotion">汽车行业缺陷 ↓ 73%</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🤖</div>
+          <h4>智能客服</h4>
+          <p class="scene-card-pain">75% 用户不满，只有 9% 解决率</p>
+          <p class="scene-card-fix">龙虾不是聊天框 → 能操作系统解决问题</p>
+          <span class="scene-card-emotion">IBM：94% 自动化率</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">⚙️</div>
+          <h4>流程自动化</h4>
+          <p class="scene-card-pain">80% 部署时间浪费在集成上</p>
+          <p class="scene-card-fix">可视化 DAG 工作流 → 拖拽连接 → 零代码</p>
+          <span class="scene-card-emotion">管理工作减少 60%</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🦾</div>
+          <h4>机械臂控制</h4>
+          <p class="scene-card-pain">集成成本高，缺标准化方案</p>
+          <p class="scene-card-fix">AI 视觉指导 → API 接口 → 一键联动</p>
+          <span class="scene-card-emotion">重装成本 ↓ 80%</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🚗</div>
+          <h4>AGV / 无人车</h4>
+          <p class="scene-card-pain">仓储物流人力成本逐年攀升</p>
+          <p class="scene-card-fix">AI 视觉 + 路径规划 → API 联动 AGV</p>
+          <span class="scene-card-emotion">仓储自动化年增 15%</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">🗂️</div>
+          <h4>数据孤岛治理</h4>
+          <p class="scene-card-pain">60% 项目因数据不达标失败</p>
+          <p class="scene-card-fix">统一 AI 入口 → 跨系统数据编排 → 工作流打通</p>
+          <span class="scene-card-emotion">"不改造系统，在系统之上架 AI 层"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">👥</div>
+          <h4>人才短缺解决</h4>
+          <p class="scene-card-pain">94% 领导者面临 AI 人才短缺</p>
+          <p class="scene-card-fix">开源 + 中文文档 + 可视化 → 不需 AI 专家</p>
+          <span class="scene-card-emotion">"会用微信就能部署 AI"</span>
+        </div>
+        <div class="scene-card">
+          <div class="scene-card-icon">💰</div>
+          <h4>成本控制</h4>
+          <p class="scene-card-pain">云 AI 月费 $20-200/人</p>
+          <p class="scene-card-fix">自托管 10 人团队成本 ↓ 50-80%</p>
+          <span class="scene-card-emotion">年省 ¥170,000+</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 4. 为什么选我们 ═══════════════ -->
+  <section class="section section--standard why-us" id="why-us">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">WHY SHISANXIANG</span>
+        <h2 class="section-title">为什么不用 ChatGPT / Gemini / 通义？</h2>
+        <p class="section-subtitle">不是更好的聊天框，是完全不同的物种</p>
+      </div>
+      <div class="compare-table-wrap reveal">
+        <table class="compare-table">
+          <thead><tr><th>对比维度</th><th>云 AI 助手</th><th class="compare-us">🦞 十三香小龙虾</th></tr></thead>
+          <tbody>
+            <tr><td>数据隐私</td><td>❌ 上传到第三方服务器</td><td class="compare-us">✅ 全部本地 / 自有服务器</td></tr>
+            <tr><td>月费 (10人团队)</td><td>$200 - $2,000</td><td class="compare-us">$30 - $100 (自托管) <strong>↓ 80%</strong></td></tr>
+            <tr><td>定制能力</td><td>仅官方插件</td><td class="compare-us">✅ 无限定制，63+ 技能可扩展</td></tr>
+            <tr><td>跨平台</td><td>各自独立 App</td><td class="compare-us">✅ 微信/飞书/钉钉/TG/Discord 统一入口</td></tr>
+            <tr><td>真正操作</td><td>❌ 给你操作说明书</td><td class="compare-us">✅ 远程桌面直接替你操作</td></tr>
+            <tr><td>中文语音</td><td>一般</td><td class="compare-us">✅ 原生优化，唤醒词"你好小龙"</td></tr>
+            <tr><td>微信自动化</td><td>❌ 不支持</td><td class="compare-us">✅ 自动回复 + 朋友圈 + 群发 + 风控</td></tr>
+            <tr><td>开源免费</td><td>❌</td><td class="compare-us">✅ MIT 协议，代码完全透明</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- 行业权威数据背书 -->
+      <div class="industry-quotes reveal">
+        <div class="ind-quote"><blockquote>"95% 的企业 AI 部署无法产生 ROI"</blockquote><cite>— KPMG AI Pulse Report 2026</cite></div>
+        <div class="ind-quote"><blockquote>"自托管团队成本降低 50-80%"</blockquote><cite>— Molt Cloud 对比报告 2026</cite></div>
+        <div class="ind-quote"><blockquote>"75% 的消费者对 AI 客服感到沮丧"</blockquote><cite>— Glance CX Consumer Study</cite></div>
+      </div>
+      <p class="why-us-cta reveal">→ 十三香小龙虾正在解决这些问题。<a href="#cta" class="btn btn--primary btn--inline"><span class="btn-glow"></span>立即体验</a></p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ 6. 核心能力 & 深度展示 ═══════════════ -->
   <section class="section section--standard features" id="features">
     <div class="container">
       <div class="section-header reveal">
@@ -717,13 +1053,13 @@
         <div class="cta-buttons">
           <a href="https://github.com/victor2025PH/13xlol" target="_blank" class="btn btn--primary btn--large btn--magnetic">
             <span class="btn-glow"></span>
-            ⭐ GitHub Star
+            🏠 家庭版 免费下载
           </a>
-          <a href="https://t.me/ai_zkw" target="_blank" class="btn btn--outline btn--large">
-            ✈️ Telegram
+          <a href="#quickstart" class="btn btn--outline btn--large">
+            💼 办公版 一键部署
           </a>
-          <a href="#contact" class="btn btn--outline btn--large">
-            💬 联系我们
+          <a href="https://t.me/ai_zkw" target="_blank" class="btn btn--outline btn--large btn--enterprise">
+            🏭 企业方案 咨询
           </a>
         </div>
         <div class="cta-deploy">
@@ -760,9 +1096,9 @@
         </div>
         <div class="footer-col">
           <h4>产品</h4>
-          <a href="#features">功能介绍</a>
-          <a href="#showcase">功能展示</a>
-          <a href="https://ai26.sbs">镜像站</a>
+          <a href="#doors">应用场景</a>
+          <a href="#features">核心能力</a>
+          <a href="#why-us">为什么选我们</a>
         </div>
         <div class="footer-col">
           <h4>社区</h4>
@@ -784,7 +1120,7 @@
 
   <button class="back-to-top" id="backToTop" aria-label="返回顶部">↑</button>
 
-  <script src="js/main.js?v=11" defer></script>
+  <script src="js/main.js?v=12" defer></script>
   <script>
   if('serviceWorker' in navigator){
     navigator.serviceWorker.getRegistrations().then(function(regs){
@@ -793,7 +1129,7 @@
     caches.keys().then(function(names){
       names.forEach(function(n){caches.delete(n)});
     });
-    navigator.serviceWorker.register('/sw.js?v=11');
+    navigator.serviceWorker.register('/sw.js?v=12');
   }
   </script>
   <script>
