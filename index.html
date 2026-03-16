@@ -43,10 +43,10 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="css/style.css" as="style">
-  <link rel="preload" href="js/main.js" as="script">
+  <link rel="preload" href="css/style.css?v=11" as="style">
+  <link rel="preload" href="js/main.js?v=11" as="script">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=11">
   <link rel="icon" href="logo.svg">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="logo.svg">
@@ -784,8 +784,18 @@
 
   <button class="back-to-top" id="backToTop" aria-label="返回顶部">↑</button>
 
-  <script src="js/main.js" defer></script>
-  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script>
+  <script src="js/main.js?v=11" defer></script>
+  <script>
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.getRegistrations().then(function(regs){
+      regs.forEach(function(r){r.unregister()});
+    });
+    caches.keys().then(function(names){
+      names.forEach(function(n){caches.delete(n)});
+    });
+    navigator.serviceWorker.register('/sw.js?v=11');
+  }
+  </script>
   <script>
   (function(){
     var bp = document.createElement('script');
