@@ -76,6 +76,7 @@
         <a href="#wechat" class="nav-link" data-i18n="nav.wechat">微信自动化</a>
         <a href="#ecosystem" class="nav-link" data-i18n="nav.ecosystem">生态版图</a>
         <a href="#personas" class="nav-link" data-i18n="nav.personas">使用场景</a>
+        <a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a>
         <a href="#cta" class="nav-link nav-link--cta" data-i18n="nav.cta">立即体验</a>
         <button class="nav-lang" id="langToggle" title="Switch Language">EN</button>
         <button class="nav-theme" id="themeToggle" title="切换主题">☀️</button>
@@ -956,6 +957,70 @@
     </div>
   </section>
 
+  <!-- ═══════════════ 快速上手 ═══════════════ -->
+  <section class="section quickstart" id="quickstart">
+    <div class="container">
+      <h2 class="section-title reveal" data-i18n="qs.title">5 分钟，从零到起飞</h2>
+      <p class="section-desc reveal" data-i18n="qs.desc">复制三行命令，整锅龙虾端上桌</p>
+      <div class="terminal reveal" id="terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot" style="background:#ff5f57"></span>
+          <span class="terminal-dot" style="background:#febc2e"></span>
+          <span class="terminal-dot" style="background:#28c840"></span>
+          <span class="terminal-title">ubuntu@shisanxiang ~ </span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-cmd" data-cmd="git clone https://github.com/victor2025PH/13xlol.git"></span></div>
+          <div class="terminal-output terminal-hidden">Cloning into '13xlol'...\nremote: Enumerating objects: 1024, done.\nremote: Total 1024 (delta 0), reused 0\nReceiving objects: 100% (1024/1024), 2.4 MiB | 12.8 MiB/s, done.</div>
+          <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-cmd" data-cmd="cd 13xlol && docker compose up -d"></span></div>
+          <div class="terminal-output terminal-hidden">[+] Running 6/6\n ✓ Network 13xlol_default    Created\n ✓ Container redis             Started   0.3s\n ✓ Container postgres           Started   0.4s\n ✓ Container shisanxiang-api    Started   1.2s\n ✓ Container shisanxiang-web    Started   1.5s\n ✓ Container shisanxiang-voice  Started   1.8s</div>
+          <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-cmd" data-cmd="echo '🦞 十三香小龙虾已就绪 → http://localhost:3000'"></span></div>
+          <div class="terminal-output terminal-hidden terminal-success">🦞 十三香小龙虾已就绪 → http://localhost:3000</div>
+        </div>
+      </div>
+      <div class="qs-features reveal">
+        <div class="qs-chip">Docker 一键部署</div>
+        <div class="qs-chip">Windows 安装包</div>
+        <div class="qs-chip">Shell 脚本安装</div>
+        <div class="qs-chip">支持 ARM / x86</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <h2 class="section-title reveal" data-i18n="faq.title">你可能想问</h2>
+      <p class="section-desc reveal" data-i18n="faq.desc">吃龙虾前的灵魂拷问，这里都有答案</p>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary class="faq-q" data-i18n="faq.q1">十三香小龙虾到底是什么？跟 ChatGPT 有什么区别？</summary>
+          <div class="faq-a" data-i18n="faq.a1">ChatGPT 是一个模型，我们是一个<strong>平台</strong>。十三香小龙虾整合了 13+ AI 大模型（包括 ChatGPT），加上语音引擎、微信自动化、远程桌面、工作流引擎等 63+ 技能，本地私有化部署，数据完全在你手里。简单说：ChatGPT 是一味调料，我们是一整锅十三香小龙虾。</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q" data-i18n="faq.q2">真的完全免费吗？有隐藏收费吗？</summary>
+          <div class="faq-a" data-i18n="faq.a2">软件本身 MIT 开源，<strong>100% 免费</strong>。你只需要自己的 AI API Key（OpenAI、DeepSeek 等）的调用费用。我们的智能路由能帮你自动选最便宜的模型，实测可省 70% Token 费。服务器可以用自己的电脑或几十块的云服务器。</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q" data-i18n="faq.q3">我不懂代码，能用吗？</summary>
+          <div class="faq-a" data-i18n="faq.a3">能！我们提供 <strong>Windows 一键安装包</strong>（双击 exe 就行）、Docker 一键部署、以及可视化工作流编辑器（拖拖拽拽就能做自动化）。不过微信自动化和远程桌面等高级功能，建议有基础 IT 知识。我们的 Telegram 社群也随时有人帮你。</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q" data-i18n="faq.q4">微信自动化会被封号吗？</summary>
+          <div class="faq-a" data-i18n="faq.a4">我们内置了<strong>三层反风控系统</strong>：随机延时模拟人类操作节奏、操作频率智能限制、敏感关键词自动拦截。同时支持"人工审核"模式——AI 起草，你一键确认才发送。风险远低于市面上的协议类工具，因为我们是基于 UI 自动化，不碰微信协议。</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q" data-i18n="faq.q5">支持哪些 AI 模型？能用国产模型吗？</summary>
+          <div class="faq-a" data-i18n="faq.a5">支持 <strong>13+ 家 AI 供应商</strong>：OpenAI (GPT-4o)、Anthropic (Claude)、Google (Gemini)、DeepSeek、智谱 GLM、通义千问、百度文心、Moonshot、零一万物、Groq、Mistral、Ollama 本地模型等。国产模型全覆盖，还能用 Ollama 跑完全离线的本地模型。</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q" data-i18n="faq.q6">数据安全吗？会不会泄露我的聊天记录？</summary>
+          <div class="faq-a" data-i18n="faq.a6"><strong>所有数据都在你自己的服务器上</strong>，我们不收集任何用户数据。代码完全开源，你可以审查每一行。AI API 调用直接走你自己的 Key，我们不做中间代理。这是自托管方案和 SaaS 服务的本质区别。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════ 赞助支持 ═══════════════ -->
   <section class="section sponsor" id="sponsor">
     <div class="container">
@@ -992,30 +1057,49 @@
     </div>
   </section>
 
-  <!-- ═══════════════ 联系我们 ═══════════════ -->
-  <section class="section contact" id="contact">
+  <!-- ═══════════════ 社群 & 联系 ═══════════════ -->
+  <section class="section community" id="contact">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">CONTACT</span>
-        <h2 class="section-title">找到我们</h2>
-      </div>
-      <div class="contact-grid reveal">
-        <a href="https://t.me/ai_zkw" target="_blank" class="contact-card">
-          <span class="contact-icon">✈️</span>
-          <strong>Telegram</strong>
-          <span>@ai_zkw</span>
+      <h2 class="section-title reveal" data-i18n="community.title">加入龙虾帮</h2>
+      <p class="section-desc reveal" data-i18n="community.desc">每一个功能都来自真实用户的需求，一起煮沸 AI 江湖</p>
+      <div class="community-grid">
+        <a href="https://t.me/ai_zkw" target="_blank" class="community-card reveal">
+          <div class="community-icon">✈️</div>
+          <h3>Telegram 群</h3>
+          <p>实时交流 · 问题秒答 · 新功能投票</p>
+          <span class="community-handle">@ai_zkw</span>
+          <div class="community-action">点击加入 →</div>
         </a>
-        <div class="contact-card">
-          <span class="contact-icon">💬</span>
-          <strong>微信</strong>
-          <span>zhu0396000</span>
-          <small>加好友请备注"十三香"</small>
+        <div class="community-card community-card--wechat reveal">
+          <div class="community-icon">💬</div>
+          <h3>微信社群</h3>
+          <p>中文交流 · 实战案例 · 手把手教程</p>
+          <span class="community-handle">微信号: zhu0396000</span>
+          <div class="community-qr">
+            <div class="qr-placeholder">加好友请备注「十三香」<br>拉你进群</div>
+          </div>
         </div>
-        <a href="https://github.com/victor2025PH/13xlol" target="_blank" class="contact-card">
-          <span class="contact-icon">🐙</span>
-          <strong>GitHub</strong>
-          <span>victor2025PH/13xlol</span>
+        <a href="https://github.com/victor2025PH/13xlol" target="_blank" class="community-card reveal">
+          <div class="community-icon">⭐</div>
+          <h3>GitHub</h3>
+          <p>源码 · Issues · Pull Requests · Star</p>
+          <span class="community-handle">victor2025PH/13xlol</span>
+          <div class="community-action">Star & Fork →</div>
         </a>
+      </div>
+      <div class="community-stats reveal">
+        <div class="community-stat">
+          <span class="community-stat-num">24h</span>
+          <span class="community-stat-label" data-i18n="community.stat1">问题响应</span>
+        </div>
+        <div class="community-stat">
+          <span class="community-stat-num">100%</span>
+          <span class="community-stat-label" data-i18n="community.stat2">开源透明</span>
+        </div>
+        <div class="community-stat">
+          <span class="community-stat-num">0</span>
+          <span class="community-stat-label" data-i18n="community.stat3">中间商赚差价</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1087,5 +1171,13 @@
   <button class="back-to-top" id="backToTop" aria-label="返回顶部">↑</button>
 
   <script src="js/main.js"></script>
+  <script>
+  (function(){
+    var bp = document.createElement('script');
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
 </body>
 </html>

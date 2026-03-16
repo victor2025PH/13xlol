@@ -295,7 +295,7 @@
     en: {
       'nav.features': 'Features', 'nav.voice': 'Voice AI', 'nav.router': 'AI Router',
       'nav.skills': 'Skills', 'nav.wechat': 'WeChat', 'nav.ecosystem': 'Ecosystem',
-      'nav.personas': 'Use Cases', 'nav.cta': 'Get Started',
+      'nav.personas': 'Use Cases', 'nav.faq': 'FAQ', 'nav.cta': 'Get Started',
       'personas.title': 'Who Uses This?',
       'personas.desc': 'Whatever your role, there\'s a spice for you in this pot',
       'personas.dev.name': 'Indie Developer',
@@ -315,11 +315,32 @@
       'hero.slogan': '13 Spices, One AI Empire',
       'hero.desc': 'Full-stack AI Assistant Platform — 13+ LLM Smart Routing · 63+ Built-in Skills · WeChat Automation<br>Remote Desktop Control · Visual Workflow · Cross-platform',
       'hero.cta1': '🚀 Get Started', 'hero.cta2': 'Learn More ↓',
+      'qs.title': '5 Minutes, Zero to Launch',
+      'qs.desc': 'Three commands, and the whole pot is served',
+      'faq.title': 'FAQ',
+      'faq.desc': 'Soul-searching questions before eating crayfish — all answered here',
+      'faq.q1': 'What exactly is ShiSanXiang? How is it different from ChatGPT?',
+      'faq.a1': 'ChatGPT is one model; we are a <strong>platform</strong>. ShiSanXiang integrates 13+ AI models (including ChatGPT), plus voice engine, WeChat automation, remote desktop, workflow engine, and 63+ skills — all self-hosted with your data under your control.',
+      'faq.q2': 'Is it really 100% free? Any hidden costs?',
+      'faq.a2': 'The software is MIT open-source, <strong>100% free</strong>. You only pay for your own AI API keys (OpenAI, DeepSeek, etc.). Our smart router auto-selects the cheapest model — saving up to 70% on tokens.',
+      'faq.q3': 'I don\'t know code. Can I still use it?',
+      'faq.a3': 'Yes! We provide a <strong>Windows one-click installer</strong> (just double-click the exe), Docker one-click deploy, and a visual drag-and-drop workflow editor. Advanced features like WeChat automation benefit from basic IT knowledge. Our Telegram group is always there to help.',
+      'faq.q4': 'Will WeChat automation get my account banned?',
+      'faq.a4': 'We have a <strong>3-layer anti-risk system</strong>: random human-like delays, smart frequency limits, and sensitive keyword blocking. Plus a "manual review" mode — AI drafts, you confirm before sending. Much safer than protocol-based tools since we use UI automation.',
+      'faq.q5': 'Which AI models are supported? Any Chinese models?',
+      'faq.a5': 'We support <strong>13+ AI providers</strong>: OpenAI, Anthropic, Google Gemini, DeepSeek, Zhipu GLM, Qwen, Baidu ERNIE, Moonshot, Yi, Groq, Mistral, Ollama local models, and more. Full Chinese model coverage, plus fully offline local models via Ollama.',
+      'faq.q6': 'Is my data safe? Will my chats be leaked?',
+      'faq.a6': '<strong>All data stays on your own server</strong>. We collect zero user data. Code is fully open-source for audit. AI API calls go directly through your own keys — no middleman proxy.',
+      'community.title': 'Join the Crayfish Gang',
+      'community.desc': 'Every feature comes from real user needs — let\'s build the AI future together',
+      'community.stat1': 'Issue Response',
+      'community.stat2': 'Open Source',
+      'community.stat3': 'Zero Middlemen',
     },
     zh: {
       'nav.features': '核心能力', 'nav.voice': '语音引擎', 'nav.router': 'AI 路由',
       'nav.skills': '技能中心', 'nav.wechat': '微信自动化', 'nav.ecosystem': '生态版图',
-      'nav.personas': '使用场景', 'nav.cta': '立即体验',
+      'nav.personas': '使用场景', 'nav.faq': 'FAQ', 'nav.cta': '立即体验',
       'hero.badge': '开源 · 免费 · 全能',
       'hero.title': '十三香小龙虾',
       'hero.slogan': '一壶十三香，煮沸 AI 江湖',
@@ -554,6 +575,45 @@
       }
       feedIdx++;
     }, 4000);
+  }
+
+  // ═══════════════ Terminal Auto-Type Demo ═══════════════
+  const termBody = document.getElementById('terminalBody');
+  if (termBody) {
+    let termRunning = false;
+    async function typeCmd(el, text, speed) {
+      el.classList.add('typing');
+      for (let i = 0; i < text.length; i++) {
+        el.textContent += text[i];
+        await new Promise(r => setTimeout(r, speed + Math.random() * 30));
+      }
+      el.classList.remove('typing');
+    }
+    async function runTerminal() {
+      if (termRunning) return;
+      termRunning = true;
+      const lines = termBody.querySelectorAll('.terminal-line');
+      const outputs = termBody.querySelectorAll('.terminal-output');
+      lines.forEach(l => { const cmd = l.querySelector('.terminal-cmd'); if (cmd) cmd.textContent = ''; });
+      outputs.forEach(o => o.classList.add('terminal-hidden'));
+
+      for (let i = 0; i < lines.length; i++) {
+        const cmd = lines[i].querySelector('.terminal-cmd');
+        if (!cmd) continue;
+        const text = cmd.getAttribute('data-cmd');
+        await typeCmd(cmd, text, 35);
+        await new Promise(r => setTimeout(r, 400));
+        if (outputs[i]) {
+          outputs[i].classList.remove('terminal-hidden');
+          await new Promise(r => setTimeout(r, 800));
+        }
+      }
+      termRunning = false;
+    }
+    const termObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) runTerminal();
+    }, { threshold: 0.4 });
+    termObs.observe(termBody.closest('.terminal'));
   }
 
 })();
