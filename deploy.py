@@ -22,13 +22,13 @@ server {
     root /var/www/shisanxiang;
     index index.html;
     gzip on;
-    gzip_types text/plain text/css application/javascript text/xml image/svg+xml;
+    gzip_types text/plain text/css application/javascript application/json text/xml image/svg+xml;
     location / { try_files $uri $uri/ /index.html; }
 }
 
 server {
     listen 443 ssl http2;
-    server_name 13x.lol www.13x.lol ai26.sbs www.ai26.sbs;
+    server_name 13x.lol www.13x.lol;
 
     ssl_certificate /etc/letsencrypt/live/13x.lol/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/13x.lol/privkey.pem;
@@ -41,8 +41,6 @@ server {
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
     add_header X-Content-Type-Options nosniff always;
     add_header X-Frame-Options SAMEORIGIN always;
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 
     root /var/www/shisanxiang;
     index index.html;
@@ -54,28 +52,42 @@ server {
     gzip_types text/plain text/css application/javascript application/json text/xml image/svg+xml application/manifest+json;
     gzip_min_length 256;
 
-    location ~* \.(css|js|svg|woff2?)$ {
-        expires 365d;
-        add_header Cache-Control "public, immutable";
-    }
+    location ~* \.(css|js|svg|woff2?)$ { expires 365d; add_header Cache-Control "public, immutable"; }
+    location ~* \.(png|jpg|jpeg|gif|ico|webp)$ { expires 30d; add_header Cache-Control "public"; }
+    location = /sw.js { expires off; add_header Cache-Control "no-cache, no-store, must-revalidate"; }
+    location = /manifest.json { add_header Cache-Control "public, max-age=86400"; }
+    location / { try_files $uri $uri/ /index.html; }
+}
 
-    location ~* \.(png|jpg|jpeg|gif|ico|webp)$ {
-        expires 30d;
-        add_header Cache-Control "public";
-    }
+server {
+    listen 443 ssl http2;
+    server_name ai26.sbs www.ai26.sbs;
 
-    location = /sw.js {
-        expires off;
-        add_header Cache-Control "no-cache, no-store, must-revalidate";
-    }
+    ssl_certificate /etc/letsencrypt/live/13x.lol/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/13x.lol/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1d;
 
-    location = /manifest.json {
-        add_header Cache-Control "public, max-age=86400";
-    }
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-Frame-Options SAMEORIGIN always;
 
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
+    root /var/www/ai26;
+    index index.html;
+
+    gzip on;
+    gzip_comp_level 6;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_types text/plain text/css application/javascript application/json text/xml image/svg+xml;
+    gzip_min_length 256;
+
+    location ~* \.(css|js|svg|woff2?)$ { expires 365d; add_header Cache-Control "public, immutable"; }
+    location ~* \.(png|jpg|jpeg|gif|ico|webp)$ { expires 30d; add_header Cache-Control "public"; }
+    location / { try_files $uri $uri/ /index.html; }
 }
 """
 

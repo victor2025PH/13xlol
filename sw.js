@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shisanxiang-v12';
+const CACHE_NAME = 'shisanxiang-v18';
 const ASSETS = [
   '/',
   '/index.html',

@@ -167,11 +167,10 @@
   if (roiTeamSize && roiCloudCost) {
     function updateROI() {
       const team = parseInt(roiTeamSize.value, 10);
-      const cloud = parseInt(roiCloudCost.value, 10);
-      const rate = 7.2;
-      const oldCost = Math.round(team * cloud * 12 * rate);
-      const selfHostedPerUser = 10;
-      const newCost = Math.round(team * selfHostedPerUser * 12 * rate);
+      const cloudRMB = parseInt(roiCloudCost.value, 10);
+      const oldCost = team * cloudRMB * 12;
+      const selfHostedPerUser = 72;
+      const newCost = team * selfHostedPerUser * 12;
       const save = oldCost - newCost;
       const pct = Math.round((save / oldCost) * 100);
       const fmt = n => '¥' + n.toLocaleString();

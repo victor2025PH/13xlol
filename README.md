@@ -284,8 +284,8 @@ python launcher.py
 
 | 渠道 | 联系方式 | 说明 |
 |------|---------|------|
-| 💬 **微信** | `zhu0396000` | 加好友请备注"十三香" |
-| ✈️ **Telegram** | [@ai_zkw](https://t.me/ai_zkw) | 欢迎全球开发者 |
+| 💬 **微信群** | 扫码加入（见官网） | 中文交流 · 实战案例 |
+| ✈️ **Telegram 群** | [@aizkw_001](https://t.me/aizkw_001) | 欢迎全球开发者 |
 | 🌐 **官网** | [13x.lol](https://13x.lol) | 产品介绍 & 演示 |
 | 🔗 **镜像** | [ai26.sbs](https://ai26.sbs) | 备用访问 |
 | 🐙 **GitHub** | [victor2025PH/13xlol](https://github.com/victor2025PH/13xlol) | Star一下又不花钱😏 |
